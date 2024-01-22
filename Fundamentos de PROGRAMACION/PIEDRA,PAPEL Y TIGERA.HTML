@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>piedra, papel o tigera</title>
+        <script>
+            //1 piedra,2 papel,3 tigera
+            let jugador = 0
+            //con el codigo "Math.floor(Math.random()*(max-min + 1) + min)" hacemos que la pc eliga un numero aleatorio entre el min y el max
+            //"Math.random" = genera un numero aleatorio entre el 0 al 1 ejem : 0.1,0.5,0.9 
+            //"Math.floor" = quita las decimales ejem : 3.123426525 = 3
+            min = 1
+            max = 3
+            let pc = Math.floor(Math.random()*(max-min + 1) + min)
+        jugador = prompt("elejir: 1 piedra, 2 papel , 3 tigera")
+       // alert("elegiste " + jugador)
+       //el codigo que esta abajo es una condicional explicada de una mejor forma = cuando el jugador escribe en el 
+       //prompt y elige la opcion una de las 3 opciones se le mostrara en la pantalla por medio de le alert la opcion 
+       //que eligio si el jugador elige la opcion 1 se le mostrara un alert que dira que eligio piedra, pero si el 
+       //jugador el elige la opcion 2 el codigo entendera que no es el 1 if else es el 2 y si esta no es en tonses 
+       //es la que sigue. si el jugador no eligue ninguna de las anteriores "else" se le mostrara en la pantalla que a perdido
+        if (jugador == 1){
+            alert("elegiste 🗿")
+        }else if(jugador == 2) {
+            alert("elegiste 📃")
+        }else if (jugador == 3){alert("elegir ✂")}
+
+        else{alert("perdiste :(")}
+
+        
+        if (pc == 1){
+            alert("PC ELIGIO 🗿")
+        }else if(pc == 2) {
+            alert("PC ELIGIO 📃")
+        }else if (pc == 3){alert("PC ELIGIO ✂")}
+
+
+        //JUGADOR VS PC
+
+        //En las lineas de codigo que estan en la parte de abajo lo que se hiso es que por medio de un alert y por
+        // if, else if y else que el jugador pueda jugar contra el pc.si el jugador elige la misma opcion de el pc 
+        //sera empate y si el jugador elige una opcion que le gana a la opcion de la pc el jugador gana pero si la pc
+        // elige una opcion que la pc le gane el jugador pierde.  
+
+        if(pc == jugador){
+            alert("EMPATE 😐")
+        }else if(jugador == 1 && pc == 3 ){
+            alert("GANASTE 😁")
+        }else if (jugador == 2 && pc == 1){
+            alert("GANASTE 😁")
+        }else if (jugador == 3 && pc == 2){
+            alert("GANASTE 😁")
+        }else{
+            alert("PERDISTE 😥")
+        }
+
+
+        //Aleatoriedad
+    //Math.floor() → Quita los decimales a cualquier numero. La clase es Math y el punto . trae la función floor()
+    //Math.random() → Genera un numero aleatorio, con la función random() Nunca es 0 pero tampoco 1 ejem: 0.1545615
+
+
+
+
+        </script>
+</head>
+<body>
+    <h1>piedra, papel o tigera</h1>
+</body>
+</html>

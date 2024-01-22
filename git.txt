@@ -1,0 +1,18 @@
+INICIAR = git init
+GUARDAR TODOS LOS ARCHIVOS = git add .
+commit = git commit -m "nombre"
+git branch -M main
+git remote add origin https://github.com/leoneljaviercallejahernandez/C-BASICO-PLATZI.git
+git push -u origin main
+
+ENVIAR REPOSITORIO = 
+
+git remoto agregar origen https://github.com/leoneljaviercallejahernandez/C-BASICO-PLATZI.git
+ git rama -M principal 
+git push -u origen principal
+
+REPOSITORIO github = C BASICO PLATZI
+
+git remote add origin https://github.com/leoneljaviercallejahernandez/C-BASICO-PLATZI.git
+git branch -M main
+git push -u origin main

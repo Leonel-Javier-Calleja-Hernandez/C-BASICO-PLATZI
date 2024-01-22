@@ -5,9 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>piedra, papel o tigera</title>
         <script>
+            //Con funtion aleatoria se pudo acortar el codigo y asi con una forma de codigo mmas corta realizar lo mismo
+            //que en  este caso elige un numero aleatorio entre el 1 y el 3 e invocarla en "let pc = aleatorio" esto 
+            //tambien da la posibilidad de cambiar los numeros mas rapido y facil 
             function aleatorio(min, max){
                 return Math.floor(Math.random()*(max-min + 1) + min)
             }
+
+            //se rebuse el codigo al crear la funtion election e invocandola para pc y 
+            //el jugador para mostrar el resultado en un alert
             function eleccion (jugada){
                 let resultado = ""
                 if (jugada == 1){
@@ -27,9 +33,11 @@
           
             let pc = aleatorio (1,3)
         jugador = prompt("elejir: 1 piedra, 2 papel , 3 tigera")
-    
+
+    //se invoca la eleccion del jugador y el pc y se muestra en un alert 
       alert("pc elige: " + eleccion(pc))
       alert("elegiste: " + eleccion(jugador))
+
         if(pc == jugador){
             alert("EMPATE 😐")
         }else if(jugador == 1 && pc == 3 ){
@@ -44,6 +52,6 @@
         </script>
 </head>
 <body>
-    <h1>piedra, papel o tigera</h1>
+    <h1>PPTFUNTION</h1>
 </body>
 </html>

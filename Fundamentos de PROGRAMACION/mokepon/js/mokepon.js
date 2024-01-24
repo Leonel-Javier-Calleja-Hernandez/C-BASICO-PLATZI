@@ -11,14 +11,16 @@ function seccionarMascotaJugador(){
     let inputHipodoge = document.getElementById("hipodoge")
     let inputCapipepo = document.getElementById("capipepo")
     let inputRatigueya = document.getElementById("ratigueya")
+    //
+    let spanMascotaJugador = document.getElementById("mascota-jugador")
 
     if (inputHipodoge.checked){
-         alert("HAS SELECCIONADO A HIPODOGE")
+         spanMascotaJugador.innerHTML="hipodoge "
     }else if(inputCapipepo.checked){
-        alert("HAS SELECCIONADO A CAPIPEPO")
+        spanMascotaJugador.innerHTML="capipepo "
     }else if(inputRatigueya.checked){
-    alert("HAS SELECCIONADO A RATIGUEYA")
-    }else(alert("NO HAS SELECCIONADO A TU MASCOTA"))
+        spanMascotaJugador.innerHTML="ratigueya "
+    }else(alert("NO HAS SELECCIONADO A TU MASCOTA :("))
 }
 
 window.addEventListener('load', iniciarJuego)

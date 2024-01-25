@@ -1,6 +1,8 @@
 let ataqueJugador
 let ataqueEnemigo
 let combate
+let vidasEnemigo = 3
+let vidasJugador = 3
 
 function iniciarJuego(){
     let botonMascotaJugador = document.getElementById("boton-mascota")
@@ -105,18 +107,31 @@ function aleatorio(min,max){
 
 //COMBATE
 function combatePartida(){
-if (ataqueJugador==ataqueEnemigo){
+let spanVidasJugador=document.getElementById("vidas-jugador")
+let spanVidasEnemigo=document.getElementById("vidas-enemigo")
+//se creo una cadena de if,ende if.. para que el usuario sepa si gano o perdio e incluso se greo una 
+//let global para que se le muestre al usuario si gana o perde cuantas vidas le quedan en el juego
+    if (ataqueJugador==ataqueEnemigo){
     combate="EMPATE"
 }else if(ataqueJugador =="FUEGO" && ataqueEnemigo =="TIERRA"){
     combate="GANASTE"
+    vidasEnemigo--
+    spanVidasEnemigo.innerHTML=vidasEnemigo
 }else if(ataqueJugador =="AGUA"&&ataqueEnemigo =="FUEGO"){
     combate="GANASTE"
+    vidasEnemigo--
+    spanVidasEnemigo.innerHTML=vidasEnemigo
 }else if(ataqueJugador =="TIERRA"&&ataqueEnemigo =="AGUA"){
     combate="GANASTE"
+    vidasEnemigo--
+    spanVidasEnemigo.innerHTML=vidasEnemigo
 }else{
     combate="PERDISTE"
+    vidasJugador--
+    spanVidasJugador.innerHTML=vidasJugador
 }
 crearMensaje()
+
 }
 
 

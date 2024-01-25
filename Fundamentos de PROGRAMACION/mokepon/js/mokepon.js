@@ -131,9 +131,16 @@ let spanVidasEnemigo=document.getElementById("vidas-enemigo")
     spanVidasJugador.innerHTML=vidasJugador
 }
 crearMensaje()
+revisarVidas()
 
 }
-
+function revisarVidas(){
+    if(vidasEnemigo==0){
+        alert("GANASTE")
+    }else if(vidasJugador==0){
+        alert("PERDISTE")
+    }
+}
 
 
 window.addEventListener('load', iniciarJuego)

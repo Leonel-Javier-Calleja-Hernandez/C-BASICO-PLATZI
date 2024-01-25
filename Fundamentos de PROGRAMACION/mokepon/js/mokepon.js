@@ -98,7 +98,22 @@ function crearMensaje(){
     sectionMensajes.appendChild(parrafo)
 }
 
+function GANASTE(){
+    let sectionMensajes = document.getElementById("MENSAJES")
 
+    let parrafo =document.createElement('p')
+    parrafo.innerHTML="🎆GANASTE✨🧨,REINICIA LA PAGINA"
+    sectionMensajes.appendChild(parrafo)
+}
+
+    function PERDISTE(){
+        let sectionMensajes = document.getElementById("MENSAJES")
+    
+        let parrafo =document.createElement('p')
+        parrafo.innerHTML="PERDISTE😕😔,REINICIA LA PAGINA"
+        sectionMensajes.appendChild(parrafo)
+
+}
 
     
 function aleatorio(min,max){
@@ -136,12 +151,11 @@ revisarVidas()
 }
 function revisarVidas(){
     if(vidasEnemigo==0){
-        alert("GANASTE")
+       GANASTE()
     }else if(vidasJugador==0){
-        alert("PERDISTE")
+        PERDISTE()
     }
 }
 
 
 window.addEventListener('load', iniciarJuego)
-

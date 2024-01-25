@@ -1,5 +1,6 @@
 let ataqueJugador
 let ataqueEnemigo
+let combate
 
 function iniciarJuego(){
     let botonMascotaJugador = document.getElementById("boton-mascota")
@@ -79,7 +80,7 @@ function seleccionarMascotaEnemigo(){
             ataqueEnemigo='TIERRA'
         }
 
-        crearMensaje()
+        combatePartida()
     }
 
 // con function crearMensaje() se se crea un mensaje en el cual diga por medio de 'p' con  el ataque de el jugador y de el enemigo let parrafo =document.createElement('p')
@@ -88,16 +89,34 @@ function crearMensaje(){
     let sectionMensajes = document.getElementById("MENSAJES")
 
     let parrafo =document.createElement('p')
-    parrafo.innerHTML='Tu MASCOTA ataco con ' + ataqueJugador + ' las mascotas de el ENEMIGO ataco con ' + ataqueEnemigo + ' -PENDIENTE'
+    parrafo.innerHTML='Tu MASCOTA ataco con ' + ataqueJugador + ' las mascotas de el ENEMIGO ataco con ' + ataqueEnemigo + " " +combate
 
 
     //con sectionMensajes.appendChild(parrafo) se le invica a el html que por ".appendChild" inserte un "parrafo" que sea creado en mokepon.js
     sectionMensajes.appendChild(parrafo)
 }
 
+
+
     
 function aleatorio(min,max){
     return Math.floor(Math.random()*(max-min+1)+min)
+}
+
+//COMBATE
+function combatePartida(){
+if (ataqueJugador==ataqueEnemigo){
+    combate="EMPATE"
+}else if(ataqueJugador =="FUEGO" && ataqueEnemigo =="TIERRA"){
+    combate="GANASTE"
+}else if(ataqueJugador =="AGUA"&&ataqueEnemigo =="FUEGO"){
+    combate="GANASTE"
+}else if(ataqueJugador =="TIERRA"&&ataqueEnemigo =="AGUA"){
+    combate="GANASTE"
+}else{
+    combate="PERDISTE"
+}
+crearMensaje()
 }
 
 

@@ -70,6 +70,7 @@ function seleccionarMascotaEnemigo(){
 
     function ataqueAleatorioEnemigo(){
         let ataqueAleatorio=aleatorio(1,3)
+
         if(ataqueAleatorio == 1){
             ataqueEnemigo='FUEGO'
         }else if(ataqueAleatorio == 2){
@@ -78,11 +79,21 @@ function seleccionarMascotaEnemigo(){
             ataqueEnemigo='TIERRA'
         }
 
-
+        crearMensaje()
     }
 
+// con function crearMensaje() se se crea un mensaje en el cual diga por medio de 'p' con  el ataque de el jugador y de el enemigo let parrafo =document.createElement('p')
+//al invocar a crearMennsaje despues de que el ataque aleatorio enemigo se ejecute y asi el usuario puede visalizar el ataque de el y el enemigo 
+function crearMensaje(){
+    let sectionMensajes = document.getElementById("MENSAJES")
+
+    let parrafo =document.createElement('p')
+    parrafo.innerHTML='Tu MASCOTA ataco con ' + ataqueJugador + ' las mascotas de el ENEMIGO ataco con ' + ataqueEnemigo + ' -PENDIENTE'
 
 
+    //con sectionMensajes.appendChild(parrafo) se le invica a el html que por ".appendChild" inserte un "parrafo" que sea creado en mokepon.js
+    sectionMensajes.appendChild(parrafo)
+}
 
     
 function aleatorio(min,max){

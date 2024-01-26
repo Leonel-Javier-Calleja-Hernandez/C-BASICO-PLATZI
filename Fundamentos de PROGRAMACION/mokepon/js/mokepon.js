@@ -17,6 +17,10 @@ function iniciarJuego(){
     let botonTierra = document.getElementById("boton-tierra")
     botonTierra.addEventListener('click',ataqueaTierra)
 
+
+    let botonReiniciar = document.getElementById("reiniciar-juego")
+    botonReiniciar.addEventListener('click',reiniciarJuego)
+
 }
 
 
@@ -156,6 +160,12 @@ function revisarVidas(){
         PERDISTE()
     }
 }
+
+function reiniciarJuego(){ç
+    //"location.reload()" recarga la pagina Actual 
+    location.reload()
+}
+
 
 
 window.addEventListener('load', iniciarJuego)

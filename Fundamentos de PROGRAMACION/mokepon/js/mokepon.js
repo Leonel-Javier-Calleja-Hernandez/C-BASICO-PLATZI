@@ -100,6 +100,9 @@ function crearMensaje(){
 
     //con sectionMensajes.appendChild(parrafo) se le invica a el html que por ".appendChild" inserte un "parrafo" que sea creado en mokepon.js
     sectionMensajes.appendChild(parrafo)
+
+
+  
 }
 
 function GANASTE(){
@@ -108,6 +111,15 @@ function GANASTE(){
     let parrafo =document.createElement('p')
     parrafo.innerHTML="🎆GANASTE✨🧨,REINICIA LA PAGINA"
     sectionMensajes.appendChild(parrafo)
+
+    let botonFuego = document.getElementById("boton-fuego")
+    botonFuego.disabled = true
+
+    let botonAgua = document.getElementById("boton-agua")
+    botonAgua.disabled = true
+
+    let botonTierra = document.getElementById("boton-tierra")
+    botonTierra.disabled = true
 }
 
     function PERDISTE(){
@@ -116,6 +128,15 @@ function GANASTE(){
         let parrafo =document.createElement('p')
         parrafo.innerHTML="PERDISTE😕😔,REINICIA LA PAGINA"
         sectionMensajes.appendChild(parrafo)
+
+        let botonFuego = document.getElementById("boton-fuego")
+        botonFuego.disabled = true
+    
+        let botonAgua = document.getElementById("boton-agua")
+        botonAgua.disabled = true
+    
+        let botonTierra = document.getElementById("boton-tierra")
+        botonTierra.disabled = true
 
 }
 
@@ -161,7 +182,7 @@ function revisarVidas(){
     }
 }
 
-function reiniciarJuego(){ç
+function reiniciarJuego(){
     //"location.reload()" recarga la pagina Actual 
     location.reload()
 }

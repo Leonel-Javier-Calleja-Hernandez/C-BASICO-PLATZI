@@ -5,6 +5,12 @@ let vidasEnemigo = 3
 let vidasJugador = 3
 
 function iniciarJuego(){
+    let sectionSeleccionarAtaque = document.getElementById("SELECCIONAR-ATAQUE")
+    sectionSeleccionarAtaque.style.display = 'none' 
+    let sectionReiniciar = document.getElementById("REINICIAR")
+    sectionReiniciar.style.display = 'none'
+
+
     let botonMascotaJugador = document.getElementById("boton-mascota")
     botonMascotaJugador.addEventListener('click',seccionarMascotaJugador)
 
@@ -26,6 +32,11 @@ function iniciarJuego(){
 
 
 function seccionarMascotaJugador(){
+    let sectionSeleccionarAtaque = document.getElementById("SELECCIONAR-ATAQUE")
+    sectionSeleccionarAtaque.style.display = 'block' 
+    let sectionSeleccionarMascota = document.getElementById("SELECCIONAR-MASCOTA")
+    sectionSeleccionarMascota.style.display = 'none' 
+
     alert('SELECCIONASTE TU MASCOTA :D')
     let inputHipodoge = document.getElementById("hipodoge")
     let inputCapipepo = document.getElementById("capipepo")
@@ -41,7 +52,8 @@ function seccionarMascotaJugador(){
     }else if(inputRatigueya.checked){
         spanMascotaJugador.innerHTML="Ratigueya "
     }else{
-        alert("NO HAS SELECCIONADO A TU MASCOTA :(")}
+        alert("NO HAS SELECCIONADO A TU MASCOTA :(")
+        reiniciarJuego()}
 
         seleccionarMascotaEnemigo()
 }
@@ -104,8 +116,15 @@ function crearMensaje(){
 
   
 }
+    //con la propiedad "disaible" el jugador al ganar o perder le desabilitamos los botones d epoderes y por ende tiene que reiniciar el juego
+
+
 
 function GANASTE(){
+
+    let sectionReiniciar = document.getElementById("REINICIAR")
+    sectionReiniciar.style.display = 'block'
+
     let sectionMensajes = document.getElementById("MENSAJES")
 
     let parrafo =document.createElement('p')
@@ -123,6 +142,10 @@ function GANASTE(){
 }
 
     function PERDISTE(){
+
+        let sectionReiniciar = document.getElementById("REINICIAR")
+        sectionReiniciar.style.display = 'block'
+        
         let sectionMensajes = document.getElementById("MENSAJES")
     
         let parrafo =document.createElement('p')

@@ -1,0 +1,13 @@
+.titulo {
+    color:chartreuse;
+    width: 350px;
+    height: 50px;
+    background-color: #fab074;
+
+}
+#SELECCIONAR-MASCOTA{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,13 +1,55 @@
 .titulo {
-    color:chartreuse;
-    width: 350px;
+    color: #3E3939;
+    width: 236px;
     height: 50px;
-    background-color: #fab074;
-
+    background-color: #ffe700;
+    border: solid;
+    padding: 50px;
 }
 #SELECCIONAR-MASCOTA{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #EAF887;
+}
+
+.targeta-de-mokepon {
+    color: #3E3939;
+    width: 70px;
+    height: 25px;
+    background-color: #ffe700;
+    border: solid;
+    padding: 30px;
+    margin: 20px;
+}
+
+button{
+    color: #3E3939;
+    width: 500px;
+    height: 50px;
+    background-color: #3BBBB3;
+    border: solid;
+    margin: 40px;
+}
+
+.elige-tu-mascota{
+    width: 180px;
+    margin: 20px;
+    padding: 10px;
+    border: solid #000000;
+    background-color: #9EDE73;
+}
+input {
+    padding: 10px;
+    width: 100px;
+    height: 30px;
+}
+
+#SELECCIONAR-ATAQUE{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #EAF887;
+    justify-content: center;
 }

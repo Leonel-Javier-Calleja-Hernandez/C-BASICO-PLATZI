@@ -33,7 +33,7 @@ function iniciarJuego(){
 
 function seccionarMascotaJugador(){
     let sectionSeleccionarAtaque = document.getElementById("SELECCIONAR-ATAQUE")
-    sectionSeleccionarAtaque.style.display = 'block' 
+    sectionSeleccionarAtaque.style.display = 'flex' 
     let sectionSeleccionarMascota = document.getElementById("SELECCIONAR-MASCOTA")
     sectionSeleccionarMascota.style.display = 'none' 
 

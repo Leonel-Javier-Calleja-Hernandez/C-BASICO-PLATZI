@@ -1,48 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+body{
+    font-family: 'Anton', sans-serif;
+}
+
 .titulo {
-    color: #3E3939;
-    width: 236px;
+    color: rgb(92, 92, 92);
+    width: 145px;
     height: 50px;
     background-color: #ffe700;
-    border: solid;
+    border-radius: 15px;
     padding: 50px;
+    font-size: 38px;
+}
+
+h2 {
+    margin: 40px;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #45474B;
+    color:#ffffff
 }
 #SELECCIONAR-MASCOTA{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #EAF887;
+    background-color: #5CD2E6;
 }
 
+.t{
+    display: flex;
+}
+ 
+
 .targeta-de-mokepon {
-    color: #3E3939;
-    width: 70px;
-    height: 25px;
-    background-color: #ffe700;
-    border: solid;
-    padding: 30px;
-    margin: 20px;
+    width: 200px;
+    height: 110px;
+    color: #45474B;
+    background: #ffe700;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    margin: 10px;
+    display: flex;
+}
+.targeta-de-mokepon img {
+    width: 65px;
+    height: 85px;
+    margin: 10px;
 }
 
 button{
-    color: #3E3939;
+    color: #ffffff;
     width: 500px;
     height: 50px;
-    background-color: #3BBBB3;
-    border: solid;
+    background-color:#495E57;
+    border-radius: 15px;
     margin: 40px;
+    font-family: 'Anton', sans-serif;
 }
 
-.elige-tu-mascota{
-    width: 180px;
-    margin: 20px;
-    padding: 10px;
-    border: solid #000000;
-    background-color: #9EDE73;
-}
+
 input {
+    display: none;
     padding: 10px;
-    width: 100px;
+    width: 10px;
     height: 30px;
 }
 
@@ -50,6 +72,13 @@ input {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #EAF887;
+    background-color: #5CD2E6;
+    justify-content: center;
+}
+p {
+    width: 70px;
+    height: 50px;
+    display: flex;
+    align-items: center;
     justify-content: center;
 }

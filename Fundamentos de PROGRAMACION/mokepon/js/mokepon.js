@@ -14,14 +14,14 @@ function iniciarJuego(){
     let botonMascotaJugador = document.getElementById("boton-mascota")
     botonMascotaJugador.addEventListener('click',seccionarMascotaJugador)
 
-    let botonFuego = document.getElementById("boton-fuego")
-    botonFuego.addEventListener('click',ataqueFuego)
+    let botonM4A1 = document.getElementById("boton-M4A1")
+    botonM4A1.addEventListener('click',ataqueM4A1)
 
-    let botonAgua = document.getElementById("boton-agua")
-    botonAgua.addEventListener('click',ataqueAgua)
+    let botonAK47 = document.getElementById("boton-AK47")
+    botonAK47.addEventListener('click',ataqueAK47)
 
-    let botonTierra = document.getElementById("boton-tierra")
-    botonTierra.addEventListener('click',ataqueaTierra)
+    let botonKAG6 = document.getElementById("boton-KAG6")
+    botonKAG6.addEventListener('click',ataqueaKAG6)
 
 
     let botonReiniciar = document.getElementById("reiniciar-juego")
@@ -37,20 +37,20 @@ function seccionarMascotaJugador(){
     let sectionSeleccionarMascota = document.getElementById("SELECCIONAR-MASCOTA")
     sectionSeleccionarMascota.style.display = 'none' 
 
-    alert('SELECCIONASTE TU MASCOTA :D')
-    let inputHipodoge = document.getElementById("hipodoge")
-    let inputCapipepo = document.getElementById("capipepo")
-    let inputRatigueya = document.getElementById("ratigueya")
+    alert('SELECCIONASTE TU PERSONAJE :D')
+    let inputVAL = document.getElementById("VAL")
+    let inputZERO = document.getElementById("ZERO")
+    let inputNACHO = document.getElementById("NACHO")
     //con spanMascotaJugador estamos llamando al id "mascota-jugado" para que con innHTML seleccionemos a lo que esta en el "span"
     //y luego poder cambier el nombre de la mascota que hallamos seleccionado y poner el nombre en el "Tu mascota "mascota-jugador" tiene 3 vidas"
     let spanMascotaJugador = document.getElementById("mascota-jugador")
 
-    if (inputHipodoge.checked){
-         spanMascotaJugador.innerHTML="Hipodoge "
-    }else if(inputCapipepo.checked){
-        spanMascotaJugador.innerHTML="Capipepo "
-    }else if(inputRatigueya.checked){
-        spanMascotaJugador.innerHTML="Ratigueya "
+    if (inputVAL.checked){
+         spanMascotaJugador.innerHTML="VAL "
+    }else if(inputZERO.checked){
+        spanMascotaJugador.innerHTML="ZERO "
+    }else if(inputNACHO.checked){
+        spanMascotaJugador.innerHTML="NACHO "
     }else{
         alert("NO HAS SELECCIONADO A TU MASCOTA :(")
         reiniciarJuego()}
@@ -63,27 +63,27 @@ function seleccionarMascotaEnemigo(){
     let mascotaEnemiga=aleatorio(1,3)
     let spanMascotaEnemigo=document.getElementById("mascota-enemigo")
     if(mascotaEnemiga==1){
-        spanMascotaEnemigo.innerHTML="Hipodoge "
+        spanMascotaEnemigo.innerHTML="VAL "
     }else if(mascotaEnemiga==2){
-        spanMascotaEnemigo.innerHTML="Capipepo "
+        spanMascotaEnemigo.innerHTML="ZERO "
     }else if(mascotaEnemiga==3){
-        spanMascotaEnemigo.innerHTML="Ratigueya "
+        spanMascotaEnemigo.innerHTML="NACHO "
     }
     
 }
 
-    function ataqueFuego(){
-        ataqueJugador="FUEGO"
+    function ataqueM4A1(){
+        ataqueJugador="M4A1"
         ataqueAleatorioEnemigo()
         }
     
-    function ataqueAgua(){
-        ataqueJugador="AGUA"
+    function ataqueAK47(){
+        ataqueJugador="AK47"
         ataqueAleatorioEnemigo()
         }
     
-    function ataqueaTierra(){
-        ataqueJugador="TIERRA"
+    function ataqueaKAG6(){
+        ataqueJugador="KAG6"
         ataqueAleatorioEnemigo()
     }
 
@@ -91,11 +91,11 @@ function seleccionarMascotaEnemigo(){
         let ataqueAleatorio=aleatorio(1,3)
 
         if(ataqueAleatorio == 1){
-            ataqueEnemigo='FUEGO'
+            ataqueEnemigo='M4A1'
         }else if(ataqueAleatorio == 2){
-            ataqueEnemigo='AGUA'
+            ataqueEnemigo='AK47'
         }else {
-            ataqueEnemigo='TIERRA'
+            ataqueEnemigo='KAG6'
         }
 
         combatePartida()
@@ -107,7 +107,7 @@ function crearMensaje(){
     let sectionMensajes = document.getElementById("MENSAJES")
 
     let parrafo =document.createElement('p')
-    parrafo.innerHTML='Tu MASCOTA ataco con ' + ataqueJugador + ' las mascotas de el ENEMIGO ataco con ' + ataqueEnemigo + " " +combate
+    parrafo.innerHTML='Tu PERSONAJE ataco con ' + ataqueJugador + ' El PERSONAJE de el ENEMIGO ataco con ' + ataqueEnemigo + " " +combate
 
 
     //con sectionMensajes.appendChild(parrafo) se le invica a el html que por ".appendChild" inserte un "parrafo" que sea creado en mokepon.js
@@ -131,14 +131,14 @@ function GANASTE(){
     parrafo.innerHTML="🎆GANASTE✨🧨,REINICIA LA PAGINA"
     sectionMensajes.appendChild(parrafo)
 
-    let botonFuego = document.getElementById("boton-fuego")
-    botonFuego.disabled = true
+    let botonM4A1 = document.getElementById("boton-M4A1")
+    botonM4A1.disabled = true
 
-    let botonAgua = document.getElementById("boton-agua")
-    botonAgua.disabled = true
+    let botonAK47 = document.getElementById("boton-AK47")
+    botonAK47.disabled = true
 
-    let botonTierra = document.getElementById("boton-tierra")
-    botonTierra.disabled = true
+    let botonKAG6 = document.getElementById("boton-KAG6")
+    botonKAG6.disabled = true
 }
 
     function PERDISTE(){
@@ -152,14 +152,14 @@ function GANASTE(){
         parrafo.innerHTML="PERDISTE😕😔,REINICIA LA PAGINA"
         sectionMensajes.appendChild(parrafo)
 
-        let botonFuego = document.getElementById("boton-fuego")
-        botonFuego.disabled = true
+        let botonM4A1 = document.getElementById("boton-M4A1")
+        botonM4A1.disabled = true
     
-        let botonAgua = document.getElementById("boton-agua")
-        botonAgua.disabled = true
+        let botonAK47 = document.getElementById("boton-AK47")
+        botonAK47.disabled = true
     
-        let botonTierra = document.getElementById("boton-tierra")
-        botonTierra.disabled = true
+        let botonKAG6 = document.getElementById("boton-KAG6")
+        botonKAG6.disabled = true
 
 }
 
@@ -176,15 +176,15 @@ let spanVidasEnemigo=document.getElementById("vidas-enemigo")
 //let global para que se le muestre al usuario si gana o perde cuantas vidas le quedan en el juego
     if (ataqueJugador==ataqueEnemigo){
     combate="EMPATE"
-}else if(ataqueJugador =="FUEGO" && ataqueEnemigo =="TIERRA"){
+}else if(ataqueJugador =="M4A1" && ataqueEnemigo =="KAG6"){
     combate="GANASTE"
     vidasEnemigo--
     spanVidasEnemigo.innerHTML=vidasEnemigo
-}else if(ataqueJugador =="AGUA"&&ataqueEnemigo =="FUEGO"){
+}else if(ataqueJugador =="AK47"&&ataqueEnemigo =="M4A1"){
     combate="GANASTE"
     vidasEnemigo--
     spanVidasEnemigo.innerHTML=vidasEnemigo
-}else if(ataqueJugador =="TIERRA"&&ataqueEnemigo =="AGUA"){
+}else if(ataqueJugador =="KAG6"&&ataqueEnemigo =="AK47"){
     combate="GANASTE"
     vidasEnemigo--
     spanVidasEnemigo.innerHTML=vidasEnemigo

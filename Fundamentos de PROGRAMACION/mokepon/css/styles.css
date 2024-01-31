@@ -2,12 +2,15 @@
 body{
     font-family: 'Anton', sans-serif;
 }
-
+.imagen-fondo{
+    width: 150px;
+    height: 150px;
+}
 .titulo {
-    color: rgb(92, 92, 92);
-    width: 145px;
+    color: rgb(255, 255, 255);
+    width: 200px;
     height: 50px;
-    background-color: #ffe700;
+    background-color: #00c2ff;
     border-radius: 15px;
     padding: 50px;
     font-size: 38px;
@@ -17,15 +20,15 @@ h2 {
     margin: 40px;
     border-radius: 10px;
     padding: 10px;
-    background-color: #45474B;
-    color:#ffffff
+    background-color: #ff0000;
+    color:#000000
 }
 #SELECCIONAR-MASCOTA{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #5CD2E6;
+    background-color: #000000;
 }
 
 .t{
@@ -36,8 +39,8 @@ h2 {
 .targeta-de-mokepon {
     width: 200px;
     height: 110px;
-    color: #45474B;
-    background: #ffe700;
+    color: #000000;
+    background: #00c2ff;
     padding: 10px;
     box-sizing: border-box;
     border-radius: 20px;
@@ -45,16 +48,15 @@ h2 {
     display: flex;
 }
 .targeta-de-mokepon img {
-    width: 65px;
-    height: 85px;
+    width: 105px;
+    height: 90px;
     margin: 10px;
 }
-
 #boton-mascota{
-    color: #ffffff;
+    color: #000000;
     width: 500px;
     height: 50px;
-    background-color:#495E57;
+    background-color:#ff0000;
     border-radius: 15px;
     margin: 40px;
     font-family: 'Anton', sans-serif;
@@ -75,29 +77,30 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
+    color: #ffffff;
 }
 
 #SELECCIONAR-ATAQUE{
     flex-direction: column;
     align-items: center;
-    background-color: #5CD2E6;
+    background-color: #000000;
     justify-content: center;
 }
 .boton-de-ataque{
-    color: #ffffff;
+    color: #000000;
     width: 300px;
     height: 50px;
-    background-color:#495E57;
+    background-color:#ff0000;
     border-radius: 15px;
     margin: 40px;
     font-family: 'Anton', sans-serif;
 }
 
 .boton-de-reiniciar{
-    color: #ffffff;
+    color: #000000;
     width: 300px;
     height: 50px;
-    background-color:#495E57;
+    background-color:#ff0000;
     border-radius: 15px;
     margin: 40px;
     font-family: 'Anton', sans-serif;

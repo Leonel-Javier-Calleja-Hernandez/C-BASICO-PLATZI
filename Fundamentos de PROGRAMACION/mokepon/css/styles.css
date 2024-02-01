@@ -88,7 +88,7 @@ input {
 
 
 p {
-    width: 165px;
+    width: 300px;
     height: 50px;
     display: flex;
     align-items: center;
@@ -117,7 +117,7 @@ p {
     height: 50px;
     background-color:#ff0000;
     border-radius: 15px;
-    margin: 40px;
+    margin: 10px;
     font-family: 'Anton', sans-serif;
 }
 #MENSAJES{
@@ -127,5 +127,6 @@ p {
         margin: 20px;
         border-radius: 20px;
         display: flex;
-        justify-content: center;
+        align-items: center;
+        flex-direction: column;
 }

@@ -108,17 +108,19 @@ function crearMensaje(){
     let sectionMensajes = document.getElementById("resultado")
     sectionMensajes.innerHTML=combate
 
-    // let parrafo =document.createElement('p')
-    // parrafo.innerHTML=combate
+    let ataqueDelJugador = document.getElementById("ataques-de-jugador")
+    let nuevoAtaqueDelJugador = document.createElement('p')
 
+    nuevoAtaqueDelJugador.innerHTML = ataqueJugador
 
+    ataqueDelJugador.appendChild(nuevoAtaqueDelJugador)
+}
     //con sectionMensajes.appendChild(parrafo) se le invica a el html que por ".appendChild" inserte un "parrafo" que sea creado en mokepon.js
     // sectionMensajes.appendChild(parrafo)
 
 
   
-}
-    //con la propiedad "disaible" el jugador al ganar o perder le desabilitamos los botones d epoderes y por ende tiene que reiniciar el juego
+//con la propiedad "disaible" el jugador al ganar o perder le desabilitamos los botones d epoderes y por ende tiene que reiniciar el juego
 
 
 

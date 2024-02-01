@@ -104,23 +104,24 @@ function seleccionarMascotaEnemigo(){
 // con function crearMensaje() se se crea un mensaje en el cual diga por medio de 'p' con  el ataque de el jugador y de el enemigo let parrafo =document.createElement('p')
 //al invocar a crearMennsaje despues de que el ataque aleatorio enemigo se ejecute y asi el usuario puede visalizar el ataque de el y el enemigo 
 function crearMensaje(){
-    
+    // "resultado"
     let sectionMensajes = document.getElementById("resultado")
     sectionMensajes.innerHTML=combate
-
+    // "ataque-de-jugador"
     let ataqueDelJugador = document.getElementById("ataques-de-jugador")
     let nuevoAtaqueDelJugador = document.createElement('p')
 
     nuevoAtaqueDelJugador.innerHTML = ataqueJugador
 
     ataqueDelJugador.appendChild(nuevoAtaqueDelJugador)
+    //ataque-de-enemigo
+    let ataqueDelEnemigo = document.getElementById("ataques-de-Enemigo")
+    let nuevoAtaqueDelEnemigor = document.createElement('p')
+
+    nuevoAtaqueDelEnemigor.innerHTML = ataqueEnemigo
+
+    ataqueDelEnemigo.appendChild(nuevoAtaqueDelEnemigor)
 }
-    //con sectionMensajes.appendChild(parrafo) se le invica a el html que por ".appendChild" inserte un "parrafo" que sea creado en mokepon.js
-    // sectionMensajes.appendChild(parrafo)
-
-
-  
-//con la propiedad "disaible" el jugador al ganar o perder le desabilitamos los botones d epoderes y por ende tiene que reiniciar el juego
 
 
 

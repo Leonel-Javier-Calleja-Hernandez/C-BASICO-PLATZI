@@ -4,36 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BLOODSTRIKEPPT</title>
-    
+
 </head>
     <body>
         <script src="./js/mokepon.js"></script>
         <link rel="stylesheet" href="./css/styles.css">
         <section id="SELECCIONAR-MASCOTA">
             <div>
-                <img src="C:\Users\USER\Downloads\FONDOBSnuevo.jpeg" class="imagen-fondo"  alt="fondo">
+                <img src="C:\Users\USER\Desktop\C BASICO PLATZI\Fundamentos de PROGRAMACION\mokepon\imagenes\FONDOBSnuevo.jpeg" class="imagen-fondo"  alt="fondo">
             </div>
-           
+
             <h1 class="titulo">BLOOD STRIKE</h1>
 
             <h2>ELIGE TU PERSONAJE</h2>
-            
+
             <div class="t">
                 <label class="targeta-de-mokepon" for="VAL">
                     <p>VAL</p>
-                    <img src="C:\Users\USER\Downloads\val1.png" alt="VAL">
+                    <img src="C:\Users\USER\Desktop\C BASICO PLATZI\Fundamentos de PROGRAMACION\mokepon\imagenes\val1.png" alt="VAL">
                     </label>
                 <input type="radio"name="mascota"id="VAL" />
 
                 <label class="targeta-de-mokepon"for="ZERO">
                     <p>ZERO</p>
-                    <img src="C:\Users\USER\Downloads\zero2.png" alt="ZERO">
+                    <img src="C:\Users\USER\Desktop\C BASICO PLATZI\Fundamentos de PROGRAMACION\mokepon\imagenes\zero2.png" alt="ZERO">
                     </label>
                 <input type="radio"name="mascota"id="ZERO"/>
 
                 <label class="targeta-de-mokepon"for="NACHO">
                     <p>NACHO</p>
-                    <img src="C:\Users\USER\Downloads\nacho3.png" alt="">
+                    <img src="C:\Users\USER\Desktop\C BASICO PLATZI\Fundamentos de PROGRAMACION\mokepon\imagenes\nacho3.png" alt="">
                 </label> 
                 <input type="radio"name="mascota"id="NACHO"/> 
             </div>
@@ -43,7 +43,7 @@
             <section id="SELECCIONAR-ATAQUE">
             <h1 class="titulo">BLOOD STRIKE</h1>
 
-            <h2>Elege tu ataque</h2>
+            <h2>Elege tu ARMA</h2>
 
             <div>
                 <button id="boton-M4A1" class="boton-de-ataque">M4A1🗿</button>
@@ -51,23 +51,24 @@
                 <button id="boton-KAG6" class="boton-de-ataque">KAG-6✂</button>
             </div>
 
-            <div>
-                <section id="MENSAJES">
-                </section>
-    
+            <div id="MENSAJES"> 
+                <p id="resultado">INICIA :D</p>
+
                 <section id="REINICIAR">
-    
                     <button id="reiniciar-juego" class="boton-de-reiniciar">REINICIAR</button>
                 </section>
-             
             </div>
 
+                
+
             <div>
+                <div id="ataques-de-jugador"></div>
+                <div id="ataques-de-Enemigo"></div>
                 <p>Tu mascota <samp id="mascota-jugador"></samp>tiene <span id="vidas-jugador"></span> vidas</p>
                 <p>El enemigo <span id="mascota-enemigo">..</span>tiene <span id="vidas-enemigo"></span> vidas</p>
             </div>
         </section>
         <p>
-            
+
     </body>
 </html>

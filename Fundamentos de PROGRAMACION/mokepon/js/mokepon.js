@@ -104,14 +104,16 @@ function seleccionarMascotaEnemigo(){
 // con function crearMensaje() se se crea un mensaje en el cual diga por medio de 'p' con  el ataque de el jugador y de el enemigo let parrafo =document.createElement('p')
 //al invocar a crearMennsaje despues de que el ataque aleatorio enemigo se ejecute y asi el usuario puede visalizar el ataque de el y el enemigo 
 function crearMensaje(){
-    let sectionMensajes = document.getElementById("MENSAJES")
+    
+    let sectionMensajes = document.getElementById("resultado")
+    sectionMensajes.innerHTML=combate
 
-    let parrafo =document.createElement('p')
-    parrafo.innerHTML='Tu PERSONAJE ataco con ' + ataqueJugador + ' El PERSONAJE de el ENEMIGO ataco con ' + ataqueEnemigo + " " +combate
+    // let parrafo =document.createElement('p')
+    // parrafo.innerHTML=combate
 
 
     //con sectionMensajes.appendChild(parrafo) se le invica a el html que por ".appendChild" inserte un "parrafo" que sea creado en mokepon.js
-    sectionMensajes.appendChild(parrafo)
+    // sectionMensajes.appendChild(parrafo)
 
 
   
@@ -125,11 +127,11 @@ function GANASTE(){
     let sectionReiniciar = document.getElementById("REINICIAR")
     sectionReiniciar.style.display = 'block'
 
-    let sectionMensajes = document.getElementById("MENSAJES")
+    //let sectionMensajes = document.getElementById("MENSAJES")
 
-    let parrafo =document.createElement('p')
+    let parrafo =document.getElementById("resultado")
     parrafo.innerHTML="🎆GANASTE✨🧨,REINICIA LA PAGINA"
-    sectionMensajes.appendChild(parrafo)
+    //sectionMensajes.appendChild(parrafo)
 
     let botonM4A1 = document.getElementById("boton-M4A1")
     botonM4A1.disabled = true
@@ -146,11 +148,11 @@ function GANASTE(){
         let sectionReiniciar = document.getElementById("REINICIAR")
         sectionReiniciar.style.display = 'block'
         
-        let sectionMensajes = document.getElementById("MENSAJES")
+        //let sectionMensajes = document.getElementById("MENSAJES")
     
-        let parrafo =document.createElement('p')
+        let parrafo =document.getElementById("resultado")
         parrafo.innerHTML="PERDISTE😕😔,REINICIA LA PAGINA"
-        sectionMensajes.appendChild(parrafo)
+        //sectionMensajes.appendChild(parrafo)
 
         let botonM4A1 = document.getElementById("boton-M4A1")
         botonM4A1.disabled = true

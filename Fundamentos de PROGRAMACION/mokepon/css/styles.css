@@ -151,3 +151,30 @@ p {
     color: #ffffff;
     margin: 10px;
 }
+
+/* VISTA DE LA PAGINA EN UN MOVIL
+@media(max-width:)--->max: se puede traducir como un hasta tal px se cumple esta condicion ,.
+TODO LO QUE ESTA EN ESTAS {} ES A LOM QUE SE VA MODIFICAR A LA MEDIDAS DADAS
+*/
+@media(max-width:360px){
+.t{
+    flex-direction: column;
+}
+.fondo-imagen-completo{
+    background-image: url('imagenes/FN2.0.jpg');
+    background-size: 200% 100%;
+}
+#SELECCIONAR-MASCOTA {
+    width: 360px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#SELECCIONAR-ATAQUE {
+    width: 360px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+}

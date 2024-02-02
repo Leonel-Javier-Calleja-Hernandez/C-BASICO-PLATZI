@@ -8,7 +8,7 @@ body{
 }
 
 .fondo-imagen-completo{
-    background-image: url('imagenes/FONDO.jpg');
+    background-image: url('imagenes/FN2.0.jpg');
     background-size: 100% 100%;
 
         /* con ".fondo-imagen-completo" agrege una imagen de fondo a la pagina y que anteriores VRS no tenia 
@@ -88,12 +88,15 @@ input {
 
 
 p {
-    width: 300px;
+    width: 100px;
     height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #ffffff;
+    border-radius: 10px;
+    background-color: #00c2ff;
+    padding: 2px;
 }
 
 #SELECCIONAR-ATAQUE{
@@ -129,4 +132,17 @@ p {
         display: flex;
         align-items: center;
         flex-direction: column;
+}
+.ataques{
+    display: grid;
+    grid-template-columns: 100px 100px;
+    height: 600px;
+}
+#resultado{
+    width: 300px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
 }

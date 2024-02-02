@@ -97,6 +97,7 @@ p {
     border-radius: 10px;
     background-color: #00c2ff;
     padding: 2px;
+    margin: 23px;
 }
 
 #SELECCIONAR-ATAQUE{
@@ -113,7 +114,10 @@ p {
     margin: 40px;
     font-family: 'Anton', sans-serif;
 }
-
+.boton-de-ataque img{
+    width: 40px;
+    height: 30px;
+}
 .boton-de-reiniciar{
     color: #000000;
     width: 300px;
@@ -135,7 +139,7 @@ p {
 }
 .ataques{
     display: grid;
-    grid-template-columns: 100px 100px;
+    grid-template-columns: 150px 150px;
     height: 600px;
 }
 #resultado{
@@ -145,4 +149,5 @@ p {
     align-items: center;
     justify-content: center;
     color: #ffffff;
+    margin: 10px;
 }

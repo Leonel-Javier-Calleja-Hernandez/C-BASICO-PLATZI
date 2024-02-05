@@ -20,14 +20,20 @@ const spanVidasEnemigo=document.getElementById("vidas-enemigo")
 const sectionMensajes = document.getElementById("resultado")
 const ataqueDelJugador = document.getElementById("ataques-de-jugador")
 const ataqueDelEnemigo = document.getElementById("ataques-de-Enemigo")
-
+// arraus o arreglos
+// tipo de variable en la que se pueden agregar valores de variables.
+// [] => se van agregaran los valores
+// let mokepones = []  
+let mokepones = []
 let ataqueJugador
 let ataqueEnemigo
 let combate
 let vidasEnemigo = 3
 let vidasJugador = 3
 
-// clases y Objetos
+
+
+// clase
 class Mokepon{
     constructor(nombre, foto, vidas){
         this.nombre = nombre
@@ -37,14 +43,19 @@ class Mokepon{
     }
 
 }
-// llamando a variable de html como lo que vamos a cambiar es el nombre entonses busque en el html,t,for= nombre de la targeta de el personaje
-// new = nuevo 
-// () => se agrega el nuevo odjeto y se separa por '' y ,
-// reviso si funciona con un console.log
-let VAL = new Mokepon('hipodoge','css\imagenes\val1.png',5)
+
+// Objetos
+let VAL = new Mokepon('Val','css\imagenes\val1.png',5)
 console.log(VAL)
 
+let ZERO =new Mokepon('Zero','css\imagenes\zero2.png',5)
 
+let NACHO = new Mokepon('Naclo','css\imagenes\nacho3.png',5)
+// agregar valores en un arreglo
+// se invoca el arreglo,y se le agrega el .push(inyecta en este arreglo el siguiente valor) y se abren () dentro se invocan las variables que en este caso son odjetos y se separan  por ","
+mokepones.push(VAL,ZERO,NACHO)
+
+console.log(mokepones)
 
 function iniciarJuego(){
     

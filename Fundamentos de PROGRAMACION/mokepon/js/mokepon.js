@@ -26,7 +26,25 @@ let ataqueEnemigo
 let combate
 let vidasEnemigo = 3
 let vidasJugador = 3
-// las variables "let" las puse arriba para no repetirlas
+
+// clases y Objetos
+class Mokepon{
+    constructor(nombre, foto, vidas){
+        this.nombre = nombre
+        this.foto = foto
+        this.vidas = vidas
+        // this = esto mismo "EL.nombre es = a nombre"
+    }
+
+}
+// llamando a variable de html como lo que vamos a cambiar es el nombre entonses busque en el html,t,for= nombre de la targeta de el personaje
+// new = nuevo 
+// () => se agrega el nuevo odjeto y se separa por '' y ,
+// reviso si funciona con un console.log
+let VAL = new Mokepon('hipodoge','css\imagenes\val1.png',5)
+console.log(VAL)
+
+
 
 function iniciarJuego(){
     

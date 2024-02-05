@@ -1,49 +1,59 @@
+const sectionSeleccionarAtaque = document.getElementById("SELECCIONAR-ATAQUE")
+const sectionReiniciar = document.getElementById("REINICIAR")
+const botonMascotaJugador = document.getElementById("boton-mascota")
+const botonM4A1 = document.getElementById("boton-M4A1")
+const botonAK47 = document.getElementById("boton-AK47")
+const botonKAG6 = document.getElementById("boton-KAG6")
+const botonReiniciar = document.getElementById("reiniciar-juego")
+
+const sectionSeleccionarMascota = document.getElementById("SELECCIONAR-MASCOTA")
+const inputVAL = document.getElementById("VAL")
+const inputZERO = document.getElementById("ZERO")
+const inputNACHO = document.getElementById("NACHO")
+const spanMascotaJugador = document.getElementById("mascota-jugador")
+
+const spanMascotaEnemigo=document.getElementById("mascota-enemigo")
+
+const spanVidasJugador=document.getElementById("vidas-jugador")
+const spanVidasEnemigo=document.getElementById("vidas-enemigo")
+
+const sectionMensajes = document.getElementById("resultado")
+const ataqueDelJugador = document.getElementById("ataques-de-jugador")
+const ataqueDelEnemigo = document.getElementById("ataques-de-Enemigo")
+
 let ataqueJugador
 let ataqueEnemigo
 let combate
 let vidasEnemigo = 3
 let vidasJugador = 3
+// las variables "let" las puse arriba para no repetirlas
 
 function iniciarJuego(){
-    let sectionSeleccionarAtaque = document.getElementById("SELECCIONAR-ATAQUE")
+    
     sectionSeleccionarAtaque.style.display = 'none' 
-    let sectionReiniciar = document.getElementById("REINICIAR")
     sectionReiniciar.style.display = 'none'
 
-
-    let botonMascotaJugador = document.getElementById("boton-mascota")
     botonMascotaJugador.addEventListener('click',seccionarMascotaJugador)
-
-    let botonM4A1 = document.getElementById("boton-M4A1")
-    botonM4A1.addEventListener('click',ataqueM4A1)
-
-    let botonAK47 = document.getElementById("boton-AK47")
+    
+    botonM4A1.addEventListener('click',ataqueM4A1)    
     botonAK47.addEventListener('click',ataqueAK47)
-
-    let botonKAG6 = document.getElementById("boton-KAG6")
     botonKAG6.addEventListener('click',ataqueaKAG6)
 
 
-    let botonReiniciar = document.getElementById("reiniciar-juego")
-    botonReiniciar.addEventListener('click',reiniciarJuego)
 
+    botonReiniciar.addEventListener('click',reiniciarJuego)
 }
 
 
 
 function seccionarMascotaJugador(){
-    let sectionSeleccionarAtaque = document.getElementById("SELECCIONAR-ATAQUE")
+    
     sectionSeleccionarAtaque.style.display = 'flex' 
-    let sectionSeleccionarMascota = document.getElementById("SELECCIONAR-MASCOTA")
+    
     sectionSeleccionarMascota.style.display = 'none' 
 
     alert('SELECCIONASTE TU PERSONAJE :D')
-    let inputVAL = document.getElementById("VAL")
-    let inputZERO = document.getElementById("ZERO")
-    let inputNACHO = document.getElementById("NACHO")
-    //con spanMascotaJugador estamos llamando al id "mascota-jugado" para que con innHTML seleccionemos a lo que esta en el "span"
-    //y luego poder cambier el nombre de la mascota que hallamos seleccionado y poner el nombre en el "Tu mascota "mascota-jugador" tiene 3 vidas"
-    let spanMascotaJugador = document.getElementById("mascota-jugador")
+    
 
     if (inputVAL.checked){
          spanMascotaJugador.innerHTML="VAL "
@@ -61,7 +71,6 @@ function seccionarMascotaJugador(){
 
 function seleccionarMascotaEnemigo(){
     let mascotaEnemiga=aleatorio(1,3)
-    let spanMascotaEnemigo=document.getElementById("mascota-enemigo")
     if(mascotaEnemiga==1){
         spanMascotaEnemigo.innerHTML="VAL "
     }else if(mascotaEnemiga==2){
@@ -105,17 +114,17 @@ function seleccionarMascotaEnemigo(){
 //al invocar a crearMennsaje despues de que el ataque aleatorio enemigo se ejecute y asi el usuario puede visalizar el ataque de el y el enemigo 
 function crearMensaje(){
     // "resultado"
-    let sectionMensajes = document.getElementById("resultado")
+    
     sectionMensajes.innerHTML=combate
     // "ataque-de-jugador"
-    let ataqueDelJugador = document.getElementById("ataques-de-jugador")
+    
     let nuevoAtaqueDelJugador = document.createElement('p')
 
     nuevoAtaqueDelJugador.innerHTML = ataqueJugador
 
     ataqueDelJugador.appendChild(nuevoAtaqueDelJugador)
     //ataque-de-enemigo
-    let ataqueDelEnemigo = document.getElementById("ataques-de-Enemigo")
+    
     let nuevoAtaqueDelEnemigor = document.createElement('p')
 
     nuevoAtaqueDelEnemigor.innerHTML = ataqueEnemigo
@@ -175,8 +184,7 @@ function aleatorio(min,max){
 
 //COMBATE
 function combatePartida(){
-let spanVidasJugador=document.getElementById("vidas-jugador")
-let spanVidasEnemigo=document.getElementById("vidas-enemigo")
+
 //se creo una cadena de if,ende if.. para que el usuario sepa si gano o perdio e incluso se greo una 
 //let global para que se le muestre al usuario si gana o perde cuantas vidas le quedan en el juego
     if (ataqueJugador==ataqueEnemigo){

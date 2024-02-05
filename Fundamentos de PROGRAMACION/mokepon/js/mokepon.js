@@ -39,6 +39,7 @@ class Mokepon{
         this.nombre = nombre
         this.foto = foto
         this.vidas = vidas
+        this.ataques = []
         // this = esto mismo "EL.nombre es = a nombre"
     }
 
@@ -51,11 +52,34 @@ console.log(VAL)
 let ZERO =new Mokepon('Zero','css\imagenes\zero2.png',5)
 
 let NACHO = new Mokepon('Naclo','css\imagenes\nacho3.png',5)
-// agregar valores en un arreglo
-// se invoca el arreglo,y se le agrega el .push(inyecta en este arreglo el siguiente valor) y se abren () dentro se invocan las variables que en este caso son odjetos y se separan  por ","
-mokepones.push(VAL,ZERO,NACHO)
+// creamos un arreglo para los ataques en el que se puede cambiar el ataque por un emoji y el ID(nombre) de el ataque
+// a este le agregamos a cada uno de nuestros personajes 5 ataques
+VAL.ataques.push(
+    {nombre:'🗿',id:'boton-M4A1'},
+    {nombre:'🗿',id:'boton-M4A1'},
+    {nombre:'🗿',id:'boton-M4A1'},
+    {nombre:'📄',id:'boton-AK47'},
+    {nombre:'✂',id:'boton-AK47'},
+)
 
-console.log(mokepones)
+ZERO.ataques.push(
+    {nombre:'✂',id:'boton-AK47'},
+    {nombre:'✂',id:'boton-AK47'},
+    {nombre:'✂',id:'boton-AK47'},
+    {nombre:'🗿',id:'boton-M4A1'},
+    {nombre:'📄',id:'boton-AK47'},
+    
+)
+
+NACHO.ataques.push(
+    {nombre:'📄',id:'boton-AK47'},
+    {nombre:'📄',id:'boton-AK47'},
+    {nombre:'📄',id:'boton-AK47'},
+    {nombre:'🗿',id:'boton-M4A1'},
+    {nombre:'✂',id:'boton-AK47'},
+)
+//VAL.ataques.push se esta agregando un valor a un arreglo que en este caso es "ataques"
+
 
 function iniciarJuego(){
     

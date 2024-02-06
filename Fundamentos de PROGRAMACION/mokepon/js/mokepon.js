@@ -20,13 +20,12 @@ const spanVidasEnemigo=document.getElementById("vidas-enemigo")
 const sectionMensajes = document.getElementById("resultado")
 const ataqueDelJugador = document.getElementById("ataques-de-jugador")
 const ataqueDelEnemigo = document.getElementById("ataques-de-Enemigo")
-// arraus o arreglos
-// tipo de variable en la que se pueden agregar valores de variables.
-// [] => se van agregaran los valores
-// let mokepones = []  
+const contenedorTargetas= document.getElementById('contenedoTargetas')
+
 let mokepones = []
 let ataqueJugador
 let ataqueEnemigo
+let opcionDeMokepones
 let combate
 let vidasEnemigo = 3
 let vidasJugador = 3
@@ -46,14 +45,12 @@ class Mokepon{
 }
 
 // Objetos
-let VAL = new Mokepon('Val','css\imagenes\val1.png',5)
-console.log(VAL)
+let VAL = new Mokepon('Val',"css/imagenes/val1.png",5)
 
-let ZERO =new Mokepon('Zero','css\imagenes\zero2.png',5)
+let ZERO =new Mokepon('Zero','css/imagenes/zero2.png',5)
 
-let NACHO = new Mokepon('Naclo','css\imagenes\nacho3.png',5)
-// creamos un arreglo para los ataques en el que se puede cambiar el ataque por un emoji y el ID(nombre) de el ataque
-// a este le agregamos a cada uno de nuestros personajes 5 ataques
+let NACHO = new Mokepon('Naclo','css/imagenes/nacho3.png',5)
+
 VAL.ataques.push(
     {nombre:'🗿',id:'boton-M4A1'},
     {nombre:'🗿',id:'boton-M4A1'},
@@ -78,13 +75,29 @@ NACHO.ataques.push(
     {nombre:'🗿',id:'boton-M4A1'},
     {nombre:'✂',id:'boton-AK47'},
 )
-//VAL.ataques.push se esta agregando un valor a un arreglo que en este caso es "ataques"
+
+mokepones.push(VAL,ZERO,NACHO)
 
 
 function iniciarJuego(){
     
     sectionSeleccionarAtaque.style.display = 'none' 
     sectionReiniciar.style.display = 'none'
+
+    // pr cada uno de los arreglos mokepones has algo
+    mokepones.forEach((mokepon) =>{
+        //´´ =>comollas invertidas sirven para implementar directamente html en variables ".js"
+        opcionDeMokepones =`
+        <input type="radio"name="mascota"id=${mokepon.nombre} />
+        <label class="targeta-de-mokepon" for=${mokepon.nombre}>
+                <p>${mokepon.nombre}</p>
+                <img src=${mokepon.foto} alt=${mokepon.nombre}>
+        </label>
+               
+        `
+    // "contenedorTargetas.innerHTML = opcionDeMokepones" SOLO ESTA IMPRIMIENDO 1 PARA QUE IMPRIMA TODODS LOS ELEMENTOS SELE AGREGA "+=""
+        contenedorTargetas.innerHTML += opcionDeMokepones
+    })
 
     botonMascotaJugador.addEventListener('click',seccionarMascotaJugador)
     

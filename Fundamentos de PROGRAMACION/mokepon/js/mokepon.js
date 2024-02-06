@@ -7,9 +7,7 @@ const botonKAG6 = document.getElementById("boton-KAG6")
 const botonReiniciar = document.getElementById("reiniciar-juego")
 
 const sectionSeleccionarMascota = document.getElementById("SELECCIONAR-MASCOTA")
-const inputVAL = document.getElementById("VAL")
-const inputZERO = document.getElementById("ZERO")
-const inputNACHO = document.getElementById("NACHO")
+
 const spanMascotaJugador = document.getElementById("mascota-jugador")
 
 const spanMascotaEnemigo=document.getElementById("mascota-enemigo")
@@ -26,6 +24,11 @@ let mokepones = []
 let ataqueJugador
 let ataqueEnemigo
 let opcionDeMokepones
+// las modifique ya que antes eran const y por que como al leer el codigo no reconose los valores ya que aun no an sido creados y los puse dentro de "mokepones.forEach" ya que hay se estan creando
+let inputVAL
+let inputZERO
+let inputNACHO
+// .
 let combate
 let vidasEnemigo = 3
 let vidasJugador = 3
@@ -46,11 +49,12 @@ class Mokepon{
 
 // Objetos
 let VAL = new Mokepon('Val',"css/imagenes/val1.png",5)
+// par colocar la url de img se se utilizan "/" ya que en el html es diferente per se utiliza es esta 
 
 let ZERO =new Mokepon('Zero','css/imagenes/zero2.png',5)
 
 let NACHO = new Mokepon('Naclo','css/imagenes/nacho3.png',5)
-
+ 
 VAL.ataques.push(
     {nombre:'🗿',id:'boton-M4A1'},
     {nombre:'🗿',id:'boton-M4A1'},
@@ -84,7 +88,8 @@ function iniciarJuego(){
     sectionSeleccionarAtaque.style.display = 'none' 
     sectionReiniciar.style.display = 'none'
 
-    // pr cada uno de los arreglos mokepones has algo
+    // "mokepones.forEach" se le indica a js que por cada elemento que se agrege a este arreglo "mokepones"" automatizando la creacion de los personajes
+    // "forEach"por cada uno de los arreglos mokepones has algo
     mokepones.forEach((mokepon) =>{
         //´´ =>comollas invertidas sirven para implementar directamente html en variables ".js"
         opcionDeMokepones =`
@@ -97,7 +102,12 @@ function iniciarJuego(){
         `
     // "contenedorTargetas.innerHTML = opcionDeMokepones" SOLO ESTA IMPRIMIENDO 1 PARA QUE IMPRIMA TODODS LOS ELEMENTOS SELE AGREGA "+=""
         contenedorTargetas.innerHTML += opcionDeMokepones
+
+        inputVAL = document.getElementById("Val")
+        inputZERO = document.getElementById("Zero")
+        inputNACHO = document.getElementById("Nacho")
     })
+
 
     botonMascotaJugador.addEventListener('click',seccionarMascotaJugador)
     

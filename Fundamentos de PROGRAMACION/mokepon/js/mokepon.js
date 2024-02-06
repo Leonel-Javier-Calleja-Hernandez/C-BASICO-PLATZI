@@ -102,7 +102,7 @@ function iniciarJuego(){
         `
     // "contenedorTargetas.innerHTML = opcionDeMokepones" SOLO ESTA IMPRIMIENDO 1 PARA QUE IMPRIMA TODODS LOS ELEMENTOS SELE AGREGA "+=""
         contenedorTargetas.innerHTML += opcionDeMokepones
-
+        // en la naterior vercion habia un error el cual al estar en la pestaña de "SECCION-ATAQUE" NO SE LE MOSTRABA EL NOMBRE DE LOS JUGADORES .
         inputVAL = document.getElementById("Val")
         inputZERO = document.getElementById("Zero")
         inputNACHO = document.getElementById("Nacho")
@@ -129,14 +129,14 @@ function seccionarMascotaJugador(){
     sectionSeleccionarMascota.style.display = 'none' 
 
     alert('SELECCIONASTE TU PERSONAJE :D')
-    
-
+// UNA SOLA FUENTES DE VERDAD = QUE ESA VARIABLE SE A AUTOMATISADA SI EL PROGRAMA CAMBIA 
+// Ej:"inputVAL" se modifico el nombre de el = "..." ya que este es texto y esto puede dar errores al modificar o al cambiar el nombre de los personajes, ahorra ya se modifica automaticamente el nombre de los personajes.
     if (inputVAL.checked){
-         spanMascotaJugador.innerHTML="VAL "
+         spanMascotaJugador.innerHTML= inputVAL.id
     }else if(inputZERO.checked){
-        spanMascotaJugador.innerHTML="ZERO "
+        spanMascotaJugador.innerHTML= inputZERO.id
     }else if(inputNACHO.checked){
-        spanMascotaJugador.innerHTML="NACHO "
+        spanMascotaJugador.innerHTML= inputNACHO.id
     }else{
         alert("NO HAS SELECCIONADO A TU MASCOTA :(")
         reiniciarJuego()}
@@ -144,17 +144,12 @@ function seccionarMascotaJugador(){
         seleccionarMascotaEnemigo()
 }
 
-
+// se combirtio la seleccionarMascotaEnemigo() en un afuente de verdad
 function seleccionarMascotaEnemigo(){
-    let mascotaEnemiga=aleatorio(1,3)
-    if(mascotaEnemiga==1){
-        spanMascotaEnemigo.innerHTML="VAL "
-    }else if(mascotaEnemiga==2){
-        spanMascotaEnemigo.innerHTML="ZERO "
-    }else if(mascotaEnemiga==3){
-        spanMascotaEnemigo.innerHTML="NACHO "
-    }
-    
+    let mascotaEnemiga=aleatorio(0, mokepones.length -1)
+// mokepones.length=es la longitud(cantidad de mokepones) y se le resta -1 ya que son 3 pero como inicia de el 0 al llegar al el 3 serian 4 entonces por ende se le resta -1 al mokepones.length
+    spanMascotaEnemigo.innerHTML = mokepones[mascotaEnemiga].nombre
+        
 }
 
     function ataqueM4A1(){

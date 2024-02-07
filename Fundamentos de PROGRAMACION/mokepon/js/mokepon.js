@@ -1,9 +1,7 @@
 const sectionSeleccionarAtaque = document.getElementById("SELECCIONAR-ATAQUE")
 const sectionReiniciar = document.getElementById("REINICIAR")
 const botonMascotaJugador = document.getElementById("boton-mascota")
-const botonM4A1 = document.getElementById("boton-M4A1")
-const botonAK47 = document.getElementById("boton-AK47")
-const botonKAG6 = document.getElementById("boton-KAG6")
+
 const botonReiniciar = document.getElementById("reiniciar-juego")
 
 const sectionSeleccionarMascota = document.getElementById("SELECCIONAR-MASCOTA")
@@ -18,7 +16,8 @@ const spanVidasEnemigo=document.getElementById("vidas-enemigo")
 const sectionMensajes = document.getElementById("resultado")
 const ataqueDelJugador = document.getElementById("ataques-de-jugador")
 const ataqueDelEnemigo = document.getElementById("ataques-de-Enemigo")
-const contenedorTargetas= document.getElementById('contenedoTargetas')
+const contenedorTargetas= document.getElementById('contenedorTargetas')
+const contenedorAtaques= document.getElementById('contenedorAtaques')
 
 let mokepones = []
 let ataqueJugador
@@ -28,9 +27,13 @@ let opcionDeMokepones
 let inputVAL
 let inputZERO
 let inputNACHO
-// .
-//"let mascotasJugador" nombre de la mascota de el jugador 
 let mascotasJugador
+// "let ataquesMokepon" nombre de el ataque de la mascota
+let ataquesMokepon
+
+let botonM4A1 
+let botonAK47
+let botonKAG6
 let combate
 let vidasEnemigo = 3
 let vidasJugador = 3
@@ -104,7 +107,6 @@ function iniciarJuego(){
         `
     // "contenedorTargetas.innerHTML = opcionDeMokepones" SOLO ESTA IMPRIMIENDO 1 PARA QUE IMPRIMA TODODS LOS ELEMENTOS SELE AGREGA "+=""
         contenedorTargetas.innerHTML += opcionDeMokepones
-        // en la naterior vercion habia un error el cual al estar en la pestaña de "SECCION-ATAQUE" NO SE LE MOSTRABA EL NOMBRE DE LOS JUGADORES .
         inputVAL = document.getElementById("Val")
         inputZERO = document.getElementById("Zero")
         inputNACHO = document.getElementById("Nacho")
@@ -132,7 +134,7 @@ function seccionarMascotaJugador(){
 
     alert('SELECCIONASTE TU PERSONAJE :D')
 // UNA SOLA FUENTES DE VERDAD = QUE ESA VARIABLE SE A AUTOMATISADA SI EL PROGRAMA CAMBIA 
-// Ej:"inputVAL" se modifico el nombre de el = "..." ya que este es texto y esto puede dar errores al modificar o al cambiar el nombre de los personajes, ahorra ya se modifica automaticamente el nombre de los personajes.
+// Ej:"inputVAL" 
     if (inputVAL.checked){
          spanMascotaJugador.innerHTML= inputVAL.id
          mascotasJugador = inputVAL.id
@@ -162,14 +164,27 @@ function extraerAtaques(mascotasJugador){
         
     }
     mostrarAtaques(ataques)
-// for = es una estructura muy similar a el forEach la diferencia es que genera una nueva variable(index=i) y por cada iteracion va a sumar un valor "array" = el arreglo que queremos iterar
-// se lee= "i" es igua a sero ";"(mientras) "i" se "<" menor a la .length(longitud) del arreglo de mokepones
-    }
+}
+
+function mostrarAtaques(ataques){
+    ataques.forEach((ataque)=>{
+    ataquesMokepon=`
+        <button id=${ataque.id} class="boton-de-ataque">${ataque.nombre}
+         <img class="${ataque.nombre}" src="css\imagenes\m4a1.png" alt="${ataque.nombre}">
+        </button>`
+    
+    contenedorAtaques.innerHTML += ataquesMokepon}
+    )
+    botonM4A1 = document.getElementById("boton-M4A1")
+    botonAK47 = document.getElementById("boton-AK47")
+    botonKAG6 = document.getElementById("boton-KAG6")
+
+}
+
 
 // se combirtio la seleccionarMascotaEnemigo() en un afuente de verdad
 function seleccionarMascotaEnemigo(){
     let mascotaEnemiga=aleatorio(0, mokepones.length -1)
-// mokepones.length=es la longitud(cantidad de mokepones) y se le resta -1 ya que son 3 pero como inicia de el 0 al llegar al el 3 serian 4 entonces por ende se le resta -1 al mokepones.length
     spanMascotaEnemigo.innerHTML = mokepones[mascotaEnemiga].nombre
         
 }
@@ -203,8 +218,6 @@ function seleccionarMascotaEnemigo(){
         combatePartida()
     }
 
-// con function crearMensaje() se se crea un mensaje en el cual diga por medio de 'p' con  el ataque de el jugador y de el enemigo let parrafo =document.createElement('p')
-//al invocar a crearMennsaje despues de que el ataque aleatorio enemigo se ejecute y asi el usuario puede visalizar el ataque de el y el enemigo 
 function crearMensaje(){
     // "resultado"
     

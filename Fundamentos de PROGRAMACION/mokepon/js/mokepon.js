@@ -26,7 +26,7 @@ let opcionDeMokepones
 // las modifique ya que antes eran const y por que como al leer el codigo no reconose los valores ya que aun no an sido creados y los puse dentro de "mokepones.forEach" ya que hay se estan creando
 let inputVAL
 let inputZERO
-let inputNACHO
+let inputnacho
 let mascotasJugador
 // "let ataquesMokepon" nombre de el ataque de la mascota
 let ataquesMokepon
@@ -58,31 +58,31 @@ let VAL = new Mokepon('Val',"css/imagenes/val1.png",5)
 
 let ZERO =new Mokepon('Zero','css/imagenes/zero2.png',5)
 
-let NACHO = new Mokepon('Naclo','css/imagenes/nacho3.png',5)
+let NACHO = new Mokepon('Nacho','css/imagenes/nacho3.png',5)
  
 VAL.ataques.push(
-    {nombre:'🗿',id:'boton-M4A1'},
-    {nombre:'🗿',id:'boton-M4A1'},
-    {nombre:'🗿',id:'boton-M4A1'},
-    {nombre:'📄',id:'boton-AK47'},
-    {nombre:'✂',id:'boton-KAG6'},
+    {nombre:'🗿',id:'boton-M4A1',imagenAtaque:'css/imagenes/m4a1.png'},
+    {nombre:'🗿',id:'boton-M4A1',imagenAtaque:'css/imagenes/m4a1.png'},
+    {nombre:'🗿',id:'boton-M4A1',imagenAtaque:'css/imagenes/m4a1.png'},
+    {nombre:'📄',id:'boton-AK47',imagenAtaque:'css/imagenes/ak47.png'},
+    {nombre:'✂',id:'boton-KAG6',imagenAtaque:'css/imagenes/kag6.png'},
 )
 
 ZERO.ataques.push(
-    {nombre:'✂',id:'boton-KAG6'},
-    {nombre:'✂',id:'boton-KAG6'},
-    {nombre:'✂',id:'boton-KAG6'},
-    {nombre:'🗿',id:'boton-M4A1'},
-    {nombre:'📄',id:'boton-AK47'},
+    {nombre:'✂',id:'boton-KAG6',imagenAtaque:'css/imagenes/kag6.png'},
+    {nombre:'✂',id:'boton-KAG6',imagenAtaque:'css/imagenes/kag6.png'},
+    {nombre:'✂',id:'boton-KAG6',imagenAtaque:'css/imagenes/kag6.png'},
+    {nombre:'🗿',id:'boton-M4A1',imagenAtaque:'css/imagenes/m4a1.png'},
+    {nombre:'📄',id:'boton-AK47',imagenAtaque:'css/imagenes/ak47.png'},
     
 )
 
 NACHO.ataques.push(
-    {nombre:'📄',id:'boton-AK47'},
-    {nombre:'📄',id:'boton-AK47'},
-    {nombre:'📄',id:'boton-AK47'},
-    {nombre:'🗿',id:'boton-M4A1'},
-    {nombre:'✂',id:'boton-KAG6'},
+    {nombre:'📄',id:'boton-AK47',imagenAtaque:'css/imagenes/ak47.png'},
+    {nombre:'📄',id:'boton-AK47',imagenAtaque:'css/imagenes/ak47.png'},
+    {nombre:'📄',id:'boton-AK47',imagenAtaque:'css/imagenes/ak47.png'},
+    {nombre:'🗿',id:'boton-M4A1',imagenAtaque:'css/imagenes/m4a1.png'},
+    {nombre:'✂',id:'boton-KAG6',imagenAtaque:'css/imagenes/kag6.png'},
 )
 
 mokepones.push(VAL,ZERO,NACHO)
@@ -109,15 +109,13 @@ function iniciarJuego(){
         contenedorTargetas.innerHTML += opcionDeMokepones
         inputVAL = document.getElementById("Val")
         inputZERO = document.getElementById("Zero")
-        inputNACHO = document.getElementById("Nacho")
+        inputnacho = document.getElementById("Nacho")
     })
 
 
     botonMascotaJugador.addEventListener('click',seccionarMascotaJugador)
     
-    botonM4A1.addEventListener('click',ataqueM4A1)    
-    botonAK47.addEventListener('click',ataqueAK47)
-    botonKAG6.addEventListener('click',ataqueaKAG6)
+    
 
 
 
@@ -141,9 +139,9 @@ function seccionarMascotaJugador(){
     }else if(inputZERO.checked){
         spanMascotaJugador.innerHTML= inputZERO.id
         mascotasJugador = inputZERO.id
-    }else if(inputNACHO.checked){
-        spanMascotaJugador.innerHTML= inputNACHO.id
-        mascotasJugador = inputNACHO.id
+    }else if(inputnacho.checked){
+        spanMascotaJugador.innerHTML= inputnacho.id
+        mascotasJugador = inputnacho.id
     }else{
         alert("NO HAS SELECCIONADO A TU MASCOTA :(")
         reiniciarJuego()}
@@ -164,13 +162,14 @@ function extraerAtaques(mascotasJugador){
         
     }
     mostrarAtaques(ataques)
+    console.log(ataques)
 }
 
 function mostrarAtaques(ataques){
     ataques.forEach((ataque)=>{
     ataquesMokepon=`
         <button id=${ataque.id} class="boton-de-ataque">${ataque.nombre}
-         <img class="${ataque.nombre}" src="css\imagenes\m4a1.png" alt="${ataque.nombre}">
+         <img class="${ataque.nombre}" src=${ataque.imagenAtaque} alt="${ataque.nombre}">
         </button>`
     
     contenedorAtaques.innerHTML += ataquesMokepon}
@@ -178,6 +177,11 @@ function mostrarAtaques(ataques){
     botonM4A1 = document.getElementById("boton-M4A1")
     botonAK47 = document.getElementById("boton-AK47")
     botonKAG6 = document.getElementById("boton-KAG6")
+    botonM4A1.addEventListener('click',ataqueM4A1)    
+    
+    botonAK47.addEventListener('click',ataqueAK47)
+    
+    botonKAG6.addEventListener('click',ataqueaKAG6)
 
 }
 

@@ -29,6 +29,8 @@ let inputVAL
 let inputZERO
 let inputNACHO
 // .
+//"let mascotasJugador" nombre de la mascota de el jugador 
+let mascotasJugador
 let combate
 let vidasEnemigo = 3
 let vidasJugador = 3
@@ -60,13 +62,13 @@ VAL.ataques.push(
     {nombre:'🗿',id:'boton-M4A1'},
     {nombre:'🗿',id:'boton-M4A1'},
     {nombre:'📄',id:'boton-AK47'},
-    {nombre:'✂',id:'boton-AK47'},
+    {nombre:'✂',id:'boton-KAG6'},
 )
 
 ZERO.ataques.push(
-    {nombre:'✂',id:'boton-AK47'},
-    {nombre:'✂',id:'boton-AK47'},
-    {nombre:'✂',id:'boton-AK47'},
+    {nombre:'✂',id:'boton-KAG6'},
+    {nombre:'✂',id:'boton-KAG6'},
+    {nombre:'✂',id:'boton-KAG6'},
     {nombre:'🗿',id:'boton-M4A1'},
     {nombre:'📄',id:'boton-AK47'},
     
@@ -77,7 +79,7 @@ NACHO.ataques.push(
     {nombre:'📄',id:'boton-AK47'},
     {nombre:'📄',id:'boton-AK47'},
     {nombre:'🗿',id:'boton-M4A1'},
-    {nombre:'✂',id:'boton-AK47'},
+    {nombre:'✂',id:'boton-KAG6'},
 )
 
 mokepones.push(VAL,ZERO,NACHO)
@@ -133,16 +135,36 @@ function seccionarMascotaJugador(){
 // Ej:"inputVAL" se modifico el nombre de el = "..." ya que este es texto y esto puede dar errores al modificar o al cambiar el nombre de los personajes, ahorra ya se modifica automaticamente el nombre de los personajes.
     if (inputVAL.checked){
          spanMascotaJugador.innerHTML= inputVAL.id
+         mascotasJugador = inputVAL.id
     }else if(inputZERO.checked){
         spanMascotaJugador.innerHTML= inputZERO.id
+        mascotasJugador = inputZERO.id
     }else if(inputNACHO.checked){
         spanMascotaJugador.innerHTML= inputNACHO.id
+        mascotasJugador = inputNACHO.id
     }else{
         alert("NO HAS SELECCIONADO A TU MASCOTA :(")
         reiniciarJuego()}
-
+        //=para buscar y extraer sus ataques
+        extraerAtaques(mascotasJugador) 
         seleccionarMascotaEnemigo()
+        // "mascotasJugador = inputNombre.id" para que se guarde el nombre de el personaje en la variable
+        // ya que en "spanMascotaJugador.innerHTML= inputVAL.id" solo lo imprime
 }
+// function extraerAtaques(mascotasJugador)=
+function extraerAtaques(mascotasJugador){
+    let ataques
+    for (let i = 0; i < mokepones.length; i++) {
+        // if(si)(mascotaJugador es igual(==) a mokepones[i]"cunado tenemos un arreglo y le ponemos lo [numero"i"] esto signigica que nos va a regresar el odjet que este en ese indise (numero).nombre as que (ataques) sea ==(igual) mokepones[i].ataques")
+        if(mascotasJugador==mokepones[i].nombre){
+            ataques = mokepones[i].ataques
+        }
+        
+    }
+    mostrarAtaques(ataques)
+// for = es una estructura muy similar a el forEach la diferencia es que genera una nueva variable(index=i) y por cada iteracion va a sumar un valor "array" = el arreglo que queremos iterar
+// se lee= "i" es igua a sero ";"(mientras) "i" se "<" menor a la .length(longitud) del arreglo de mokepones
+    }
 
 // se combirtio la seleccionarMascotaEnemigo() en un afuente de verdad
 function seleccionarMascotaEnemigo(){

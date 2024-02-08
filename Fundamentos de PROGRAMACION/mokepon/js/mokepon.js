@@ -181,27 +181,29 @@ function mostrarAtaques(ataques){
     botonAK47 = document.getElementById("boton-AK47")
     botonKAG6 = document.getElementById("boton-KAG6")
     botones =  document.querySelectorAll('.BAtaque')
-
+        console.log(botones)
 
 
 }
 
-function secuenciaDeAtaque(){
+function secuenciaAtaque(){
     botones.forEach((boton)=> {
         boton.addEventListener('click',(e)=>{
-            if(e.target.textContent=== '🗿'){
-                ataqueJugador.push('M4A1')
-       console.log(ataqueJugador)
+            if(e.target.textContent === '📄\n         \n        '){
+                ataqueJugador.push('AK47')
                 boton.style.background = '#ff00bf'
-            }else if(e.target.textContent=== '📄'){
-             ataqueJugador.push('AK47')
+            }
+            else if(e.target.textContent === '🗿\n         \n        '){
+             ataqueJugador.push('M4A1')
         console.log(ataqueJugador)
-                boton.style.background = '#ff00bf'
-            }else{
+                boton.style.background = '#ff00bf'}
+            else{
                 ataqueJugador.push('KAG6')
        console.log(ataqueJugador)
                 boton.style.background = '#ff00bf'
             }
+            console.log(e)
+            console.log(ataqueJugador)
             ataqueAleatorioEnemigo()
         })
     })
@@ -212,7 +214,7 @@ function seleccionarMascotaEnemigo(){
     let mascotaEnemiga=aleatorio(0, mokepones.length -1)
     spanMascotaEnemigo.innerHTML = mokepones[mascotaEnemiga].nombre
     ataquesMokeponEnemigo = mokepones[mascotaEnemiga].ataques
-    secuenciaDeAtaque()
+    secuenciaAtaque()
 }
 
     // function ataqueM4A1(){

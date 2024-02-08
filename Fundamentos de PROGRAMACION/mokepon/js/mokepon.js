@@ -20,20 +20,23 @@ const contenedorTargetas= document.getElementById('contenedorTargetas')
 const contenedorAtaques= document.getElementById('contenedorAtaques')
 
 let mokepones = []
-let ataqueJugador
-let ataqueEnemigo
+let ataqueJugador =[]
+let ataqueEnemigo =[]
 let opcionDeMokepones
 // las modifique ya que antes eran const y por que como al leer el codigo no reconose los valores ya que aun no an sido creados y los puse dentro de "mokepones.forEach" ya que hay se estan creando
 let inputVAL
 let inputZERO
-let inputnacho
+let inputNACHO
 let mascotasJugador
 // "let ataquesMokepon" nombre de el ataque de la mascota
 let ataquesMokepon
-
+let ataquesMokeponEnemigo
 let botonM4A1 
 let botonAK47
 let botonKAG6
+let botones =[]
+
+
 let combate
 let vidasEnemigo = 3
 let vidasJugador = 3
@@ -109,7 +112,7 @@ function iniciarJuego(){
         contenedorTargetas.innerHTML += opcionDeMokepones
         inputVAL = document.getElementById("Val")
         inputZERO = document.getElementById("Zero")
-        inputnacho = document.getElementById("Nacho")
+        inputNACHO = document.getElementById("Nacho")
     })
 
 
@@ -139,9 +142,9 @@ function seccionarMascotaJugador(){
     }else if(inputZERO.checked){
         spanMascotaJugador.innerHTML= inputZERO.id
         mascotasJugador = inputZERO.id
-    }else if(inputnacho.checked){
-        spanMascotaJugador.innerHTML= inputnacho.id
-        mascotasJugador = inputnacho.id
+    }else if(inputNACHO.checked){
+        spanMascotaJugador.innerHTML= inputNACHO.id
+        mascotasJugador = inputNACHO.id
     }else{
         alert("NO HAS SELECCIONADO A TU MASCOTA :(")
         reiniciarJuego()}
@@ -168,7 +171,7 @@ function extraerAtaques(mascotasJugador){
 function mostrarAtaques(ataques){
     ataques.forEach((ataque)=>{
     ataquesMokepon=`
-        <button id=${ataque.id} class="boton-de-ataque">${ataque.nombre}
+        <button id=${ataque.id} class="boton-de-ataque BAtaque">${ataque.nombre}
          <img class="${ataque.nombre}" src=${ataque.imagenAtaque} alt="${ataque.nombre}">
         </button>`
     
@@ -177,48 +180,67 @@ function mostrarAtaques(ataques){
     botonM4A1 = document.getElementById("boton-M4A1")
     botonAK47 = document.getElementById("boton-AK47")
     botonKAG6 = document.getElementById("boton-KAG6")
-    botonM4A1.addEventListener('click',ataqueM4A1)    
-    
-    botonAK47.addEventListener('click',ataqueAK47)
-    
-    botonKAG6.addEventListener('click',ataqueaKAG6)
+    botones =  document.querySelectorAll('.BAtaque')
+
+
 
 }
 
-
+function secuenciaDeAtaque(){
+    botones.forEach((boton)=> {
+        boton.addEventListener('click',(e)=>{
+            if(e.target.textContent=== '🗿'){
+                ataqueJugador.push('M4A1')
+       console.log(ataqueJugador)
+                boton.style.background = '#ff00bf'
+            }else if(e.target.textContent=== '📄'){
+             ataqueJugador.push('AK47')
+        console.log(ataqueJugador)
+                boton.style.background = '#ff00bf'
+            }else{
+                ataqueJugador.push('KAG6')
+       console.log(ataqueJugador)
+                boton.style.background = '#ff00bf'
+            }
+            ataqueAleatorioEnemigo()
+        })
+    })
+   
+}
 // se combirtio la seleccionarMascotaEnemigo() en un afuente de verdad
 function seleccionarMascotaEnemigo(){
     let mascotaEnemiga=aleatorio(0, mokepones.length -1)
     spanMascotaEnemigo.innerHTML = mokepones[mascotaEnemiga].nombre
-        
+    ataquesMokeponEnemigo = mokepones[mascotaEnemiga].ataques
+    secuenciaDeAtaque()
 }
 
-    function ataqueM4A1(){
-        ataqueJugador="M4A1"
-        ataqueAleatorioEnemigo()
-        }
+    // function ataqueM4A1(){
+    //     ataqueJugador="M4A1"
+    //     ataqueAleatorioEnemigo()
+    //     }
     
-    function ataqueAK47(){
-        ataqueJugador="AK47"
-        ataqueAleatorioEnemigo()
-        }
+    // function ataqueAK47(){
+    //     ataqueJugador="AK47"
+    //     ataqueAleatorioEnemigo()
+    //     }
     
-    function ataqueaKAG6(){
-        ataqueJugador="KAG6"
-        ataqueAleatorioEnemigo()
-    }
+    // function ataqueaKAG6(){
+    //     ataqueJugador="KAG6"
+    //     ataqueAleatorioEnemigo()
+    // }
 
     function ataqueAleatorioEnemigo(){
-        let ataqueAleatorio=aleatorio(1,3)
+        let ataqueAleatorio=aleatorio(0, ataquesMokeponEnemigo.length -1)
 
-        if(ataqueAleatorio == 1){
-            ataqueEnemigo='M4A1'
-        }else if(ataqueAleatorio == 2){
-            ataqueEnemigo='AK47'
+        if(ataqueAleatorio == 0 || ataqueAleatorio ==1 ){
+            ataqueEnemigo.push=('M4A1')
+        }else if(ataqueAleatorio == 3 || ataqueAleatorio == 4){
+            ataqueEnemigo.push=('AK47')
         }else {
-            ataqueEnemigo='KAG6'
+            ataqueEnemigo.push=('KAG6')
         }
-
+        console.log(ataqueEnemigo)
         combatePartida()
     }
 

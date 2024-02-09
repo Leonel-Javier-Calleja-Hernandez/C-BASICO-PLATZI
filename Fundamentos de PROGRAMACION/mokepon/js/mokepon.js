@@ -185,7 +185,9 @@ function mostrarAtaques(ataques){
 
 
 }
-// Eventos de click dinamicos= fuciona"solucionar al tocar imagen"
+// Eventos de click dinamicos= fuciona"solucionar IMG"
+// SOLUCIONADO IMG= ANTES AL TOCARLA IMAGEN EL CODIGO ENTENDIA QUE NO AVIA SELECCIONADO NADA ENTONSES automaticamente se selecccionada el else con el "||e.target.alt==='📄'" su funcion es como 2 condicion que en este caso seria la img y quite el else ya que si mas a futuro se le agrega algo a los botones no de problemas
+// NOTA=utilizar el console.log para solucionar errores y saber usarlo 
 function secuenciaAtaque(){
     botones.forEach((boton)=> {
         boton.addEventListener('click',(e)=>{
@@ -201,9 +203,9 @@ function secuenciaAtaque(){
            console.log(ataqueJugador)
                    boton.style.background = '#ff00bf'
                }
-            console.log(e)
-            console.log(e.target.alt==='✂')
-            console.log(ataqueJugador)
+            // console.log(e)
+            // console.log(e.target.alt==='✂')
+            // console.log(ataqueJugador)
             ataqueAleatorioEnemigo()
         })
     })
@@ -217,30 +219,17 @@ function seleccionarMascotaEnemigo(){
     secuenciaAtaque()
 }
 
-    // function ataqueM4A1(){
-    //     ataqueJugador="M4A1"
-    //     ataqueAleatorioEnemigo()
-    //     }
-    
-    // function ataqueAK47(){
-    //     ataqueJugador="AK47"
-    //     ataqueAleatorioEnemigo()
-    //     }
-    
-    // function ataqueaKAG6(){
-    //     ataqueJugador="KAG6"
-    //     ataqueAleatorioEnemigo()
-    // }
+
 
     function ataqueAleatorioEnemigo(){
         let ataqueAleatorio=aleatorio(0, ataquesMokeponEnemigo.length -1)
 
         if(ataqueAleatorio == 0 || ataqueAleatorio ==1 ){
-            ataqueEnemigo.push=('M4A1')
+            ataqueEnemigo.push('M4A1')
         }else if(ataqueAleatorio == 3 || ataqueAleatorio == 4){
-            ataqueEnemigo.push=('AK47')
+            ataqueEnemigo.push('AK47')
         }else {
-            ataqueEnemigo.push=('KAG6')
+            ataqueEnemigo.push('KAG6')
         }
         console.log(ataqueEnemigo)
         combatePartida()

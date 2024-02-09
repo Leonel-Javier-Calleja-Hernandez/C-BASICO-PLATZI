@@ -220,7 +220,7 @@ function seleccionarMascotaEnemigo(){
 }
 
 
-
+//  'function ataqueAleatorioEnemigo()' ya se esta guardando en el arreglo ataqueEnemigo en fila
     function ataqueAleatorioEnemigo(){
         let ataqueAleatorio=aleatorio(0, ataquesMokeponEnemigo.length -1)
 
@@ -232,8 +232,15 @@ function seleccionarMascotaEnemigo(){
             ataqueEnemigo.push('KAG6')
         }
         console.log(ataqueEnemigo)
-        combatePartida()
+        iniciarPelea()
+        
     }
+
+function iniciarPelea(){
+    if(ataqueJugador.length=== 5)
+    combatePartida()
+}
+
 
 function crearMensaje(){
     // "resultado"

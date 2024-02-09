@@ -185,24 +185,24 @@ function mostrarAtaques(ataques){
 
 
 }
-
+// Eventos de click dinamicos= fuciona"solucionar al tocar imagen"
 function secuenciaAtaque(){
     botones.forEach((boton)=> {
         boton.addEventListener('click',(e)=>{
-            if(e.target.textContent === '📄\n         \n        '){
+            if(e.target.textContent === '📄\n         \n        '||e.target.alt==='📄'){
                 ataqueJugador.push('AK47')
                 boton.style.background = '#ff00bf'
-            }
-            else if(e.target.textContent === '🗿\n         \n        '){
+            }else if(e.target.textContent=== '🗿\n         \n        '||e.target.alt==='🗿'){
              ataqueJugador.push('M4A1')
         console.log(ataqueJugador)
-                boton.style.background = '#ff00bf'}
-            else{
-                ataqueJugador.push('KAG6')
-       console.log(ataqueJugador)
                 boton.style.background = '#ff00bf'
-            }
+            }else if(e.target.textContent=== '✂\n         \n        '||e.target.alt==='✂'){
+                ataqueJugador.push('KAG6')
+           console.log(ataqueJugador)
+                   boton.style.background = '#ff00bf'
+               }
             console.log(e)
+            console.log(e.target.alt==='✂')
             console.log(ataqueJugador)
             ataqueAleatorioEnemigo()
         })

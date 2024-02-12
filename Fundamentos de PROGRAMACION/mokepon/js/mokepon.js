@@ -196,14 +196,17 @@ function secuenciaAtaque(){
             if(e.target.textContent === '📄\n         \n        '||e.target.alt==='📄'){
                 ataqueJugador.push('AK47')
                 boton.style.background = '#ff00bf'
+                boton.disabled = true
             }else if(e.target.textContent=== '🗿\n         \n        '||e.target.alt==='🗿'){
-             ataqueJugador.push('M4A1')
-        console.log(ataqueJugador)
+                ataqueJugador.push('M4A1')
+                console.log(ataqueJugador)
                 boton.style.background = '#ff00bf'
+                boton.disabled = true
             }else if(e.target.textContent=== '✂\n         \n        '||e.target.alt==='✂'){
                 ataqueJugador.push('KAG6')
-           console.log(ataqueJugador)
-                   boton.style.background = '#ff00bf'
+                console.log(ataqueJugador)
+                boton.style.background = '#ff00bf'
+                boton.disabled = true
                }
             // console.log(e)
             // console.log(e.target.alt==='✂')
@@ -324,8 +327,6 @@ function combatePartida(){
         if(ataqueJugador[index]===ataqueEnemigo[index]){
             indexAmbosOponentes(index, index)
             crearMensaje("EMPATE")
-            victoriasJugador++
-            spanVidasJugador.innerHTML = victoriasJugador
         } else if(ataqueJugador[index]==='M4A1'&& ataqueEnemigo[index]==='KAG6'||ataqueJugador[index]==='AK47'&&ataqueEnemigo[index]==='M4A1'||ataqueJugador[index]==='KAG6'&&ataqueEnemigo[index]==='AK47'){
             indexAmbosOponentes(index, index)
             crearMensaje("GANASTE")

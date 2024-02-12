@@ -18,9 +18,10 @@ const ataqueDelJugador = document.getElementById("ataques-de-jugador")
 const ataqueDelEnemigo = document.getElementById("ataques-de-Enemigo")
 const contenedorTargetas= document.getElementById('contenedorTargetas')
 const contenedorAtaques= document.getElementById('contenedorAtaques')
-
+// con const sectiojVerMapa y mapa se lla,a a los id de html para el canvas
 const sectionVerMapa = document.getElementById("ver-mapa")
 const mapa = document.getElementById("mapa")
+
 let mokepones = []
 let ataqueJugador =[]
 let ataqueEnemigo =[]
@@ -45,6 +46,7 @@ let combate
 let vidasEnemigo = 3
 let vidasJugador = 3
 let lienzo = mapa.getContext("2d")
+let intervalo
 // let lienzo = mapa.getContext("2d") nos permite usar el lienzo para dibujar en el canvas
 
 // clase
@@ -54,6 +56,16 @@ class Mokepon{
         this.foto = foto
         this.vidas = vidas
         this.ataques = []
+        // le agrege las dimenciones de la imagen, tambien la funcion de pintar la imagen  y que se mueva asi la derecha
+        this.x = 20
+        this.y = 30
+        this.ancho = 80
+        this.alto = 80
+        this.mapaFoto = new Image()
+        this.mapaFoto.src = foto
+        this.velocidadX = 0
+        this.velocidadY = 0
+
         // this = esto mismo "EL.nombre es = a nombre"
     }
 
@@ -136,22 +148,12 @@ function seccionarMascotaJugador(){
     
     // sectionSeleccionarAtaque.style.display = 'flex' 
     sectionVerMapa.style.display = 'flex'
+    intervalo = setInterval(pintarPersonaje,50)
 
     sectionSeleccionarMascota.style.display = 'none'
-    let imagenVal= new Image()
-    imagenVal.src = VAL.foto
-    lienzo.drawImage(
-        imagenVal,
-        20,
-        40,
-        100,
-        100,
 
-    )
 
     alert('SELECCIONASTE TU PERSONAJE :D')
-// UNA SOLA FUENTES DE VERDAD = QUE ESA VARIABLE SE A AUTOMATISADA SI EL PROGRAMA CAMBIA 
-// Ej:"inputVAL" 
     if (inputVAL.checked){
          spanMascotaJugador.innerHTML= inputVAL.id
          mascotasJugador = inputVAL.id
@@ -292,16 +294,7 @@ function GANASTE(){
 
     let parrafo =document.getElementById("resultado")
     parrafo.innerHTML="🎆GANASTE✨🧨,REINICIA LA PAGINA"
-    //sectionMensajes.appendChild(parrafo)
-
-    // let botonM4A1 = document.getElementById("boton-M4A1")
-    // botonM4A1.disabled = true
-
-    // let botonAK47 = document.getElementById("boton-AK47")
-    // botonAK47.disabled = true
-
-    // let botonKAG6 = document.getElementById("boton-KAG6")
-    // botonKAG6.disabled = true
+   
 }
 
     function PERDISTE(){
@@ -313,16 +306,7 @@ function GANASTE(){
     
         let parrafo =document.getElementById("resultado")
         parrafo.innerHTML="PERDISTE😕😔,REINICIA LA PAGINA"
-        // //sectionMensajes.appendChild(parrafo)
-
-        // let botonM4A1 = document.getElementById("boton-M4A1")
-        // botonM4A1.disabled = true
-    
-        // let botonAK47 = document.getElementById("boton-AK47")
-        // botonAK47.disabled = true
-    
-        // let botonKAG6 = document.getElementById("boton-KAG6")
-        // botonKAG6.disabled = true
+       
 
 }
 
@@ -375,7 +359,37 @@ function reiniciarJuego(){
     //"location.reload()" recarga la pagina Actual 
     location.reload()
 }
+// "pintarPersonaje" agrega la imagen
+function pintarPersonaje(){
+    VAL.x = VAL.x + VAL.velocidadX
+    VAL.y = VAL.y + VAL.velocidadY
+    lienzo.clearRect(0,0, mapa.width,mapa.height)
+    // "lienzo.clearRect(0,0, mapa.width,mapa.height)" limpi el canvas dando la ilucion de movimiento
+    lienzo.drawImage(
+        VAL.mapaFoto,
+        VAL.x,
+        VAL.y,
+        VAL.ancho,
+        VAL.alto,
+    )
+}
 
-
-
+// MOVER
+function moverArriba(){
+VAL.velocidadY = -5
+}
+function moverAbajo(){
+    VAL.velocidadY = 5
+    }
+function moverDerecha(){
+    VAL.velocidadX = 5
+    }
+function moverIzquierda(){
+    VAL.velocidadX = -5 
+    }       
+    
+function detenerMovimiento(){
+    VAL.velocidadX = 0
+    VAL.velocidadY = 0
+}
 window.addEventListener('load', iniciarJuego)

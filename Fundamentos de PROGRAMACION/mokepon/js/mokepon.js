@@ -19,6 +19,8 @@ const ataqueDelEnemigo = document.getElementById("ataques-de-Enemigo")
 const contenedorTargetas= document.getElementById('contenedorTargetas')
 const contenedorAtaques= document.getElementById('contenedorAtaques')
 
+const sectionVerMapa = document.getElementById("ver-mapa")
+const mapa = document.getElementById("mapa")
 let mokepones = []
 let ataqueJugador =[]
 let ataqueEnemigo =[]
@@ -42,8 +44,8 @@ let victoriasEnemigo = 0
 let combate
 let vidasEnemigo = 3
 let vidasJugador = 3
-
-
+let lienzo = mapa.getContext("2d")
+// let lienzo = mapa.getContext("2d") nos permite usar el lienzo para dibujar en el canvas
 
 // clase
 class Mokepon{
@@ -97,6 +99,7 @@ function iniciarJuego(){
     
     sectionSeleccionarAtaque.style.display = 'none' 
     sectionReiniciar.style.display = 'none'
+    sectionVerMapa.style.display = 'none'
 
     // "mokepones.forEach" se le indica a js que por cada elemento que se agrege a este arreglo "mokepones"" automatizando la creacion de los personajes
     // "forEach"por cada uno de los arreglos mokepones has algo
@@ -131,9 +134,20 @@ function iniciarJuego(){
 
 function seccionarMascotaJugador(){
     
-    sectionSeleccionarAtaque.style.display = 'flex' 
-    
-    sectionSeleccionarMascota.style.display = 'none' 
+    // sectionSeleccionarAtaque.style.display = 'flex' 
+    sectionVerMapa.style.display = 'flex'
+
+    sectionSeleccionarMascota.style.display = 'none'
+    let imagenVal= new Image()
+    imagenVal.src = VAL.foto
+    lienzo.drawImage(
+        imagenVal,
+        20,
+        40,
+        100,
+        100,
+
+    )
 
     alert('SELECCIONASTE TU PERSONAJE :D')
 // UNA SOLA FUENTES DE VERDAD = QUE ESA VARIABLE SE A AUTOMATISADA SI EL PROGRAMA CAMBIA 

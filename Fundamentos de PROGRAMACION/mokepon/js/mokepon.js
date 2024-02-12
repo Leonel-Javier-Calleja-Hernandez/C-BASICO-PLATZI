@@ -35,8 +35,10 @@ let botonM4A1
 let botonAK47
 let botonKAG6
 let botones =[]
-
-
+let indexAtaqueJugador
+let indexAtaqueEnemigo
+let victoriasJugador = 0
+let victoriasEnemigo = 0
 let combate
 let vidasEnemigo = 3
 let vidasJugador = 3
@@ -165,7 +167,7 @@ function extraerAtaques(mascotasJugador){
         
     }
     mostrarAtaques(ataques)
-    console.log(ataques)
+    // console.log(ataques)
 }
 
 function mostrarAtaques(ataques){
@@ -181,7 +183,7 @@ function mostrarAtaques(ataques){
     botonAK47 = document.getElementById("boton-AK47")
     botonKAG6 = document.getElementById("boton-KAG6")
     botones =  document.querySelectorAll('.BAtaque')
-        console.log(botones)
+        // console.log(botones)
 
 
 }
@@ -250,14 +252,14 @@ function crearMensaje(){
     
     let nuevoAtaqueDelJugador = document.createElement('p')
 
-    nuevoAtaqueDelJugador.innerHTML = ataqueJugador
+    nuevoAtaqueDelJugador.innerHTML = indexAtaqueJugador
 
     ataqueDelJugador.appendChild(nuevoAtaqueDelJugador)
     //ataque-de-enemigo
     
     let nuevoAtaqueDelEnemigor = document.createElement('p')
 
-    nuevoAtaqueDelEnemigor.innerHTML = ataqueEnemigo
+    nuevoAtaqueDelEnemigor.innerHTML = indexAtaqueEnemigo
 
     ataqueDelEnemigo.appendChild(nuevoAtaqueDelEnemigor)
 }
@@ -275,14 +277,14 @@ function GANASTE(){
     parrafo.innerHTML="🎆GANASTE✨🧨,REINICIA LA PAGINA"
     //sectionMensajes.appendChild(parrafo)
 
-    let botonM4A1 = document.getElementById("boton-M4A1")
-    botonM4A1.disabled = true
+    // let botonM4A1 = document.getElementById("boton-M4A1")
+    // botonM4A1.disabled = true
 
-    let botonAK47 = document.getElementById("boton-AK47")
-    botonAK47.disabled = true
+    // let botonAK47 = document.getElementById("boton-AK47")
+    // botonAK47.disabled = true
 
-    let botonKAG6 = document.getElementById("boton-KAG6")
-    botonKAG6.disabled = true
+    // let botonKAG6 = document.getElementById("boton-KAG6")
+    // botonKAG6.disabled = true
 }
 
     function PERDISTE(){
@@ -294,16 +296,16 @@ function GANASTE(){
     
         let parrafo =document.getElementById("resultado")
         parrafo.innerHTML="PERDISTE😕😔,REINICIA LA PAGINA"
-        //sectionMensajes.appendChild(parrafo)
+        // //sectionMensajes.appendChild(parrafo)
 
-        let botonM4A1 = document.getElementById("boton-M4A1")
-        botonM4A1.disabled = true
+        // let botonM4A1 = document.getElementById("boton-M4A1")
+        // botonM4A1.disabled = true
     
-        let botonAK47 = document.getElementById("boton-AK47")
-        botonAK47.disabled = true
+        // let botonAK47 = document.getElementById("boton-AK47")
+        // botonAK47.disabled = true
     
-        let botonKAG6 = document.getElementById("boton-KAG6")
-        botonKAG6.disabled = true
+        // let botonKAG6 = document.getElementById("boton-KAG6")
+        // botonKAG6.disabled = true
 
 }
 
@@ -311,40 +313,46 @@ function GANASTE(){
 function aleatorio(min,max){
     return Math.floor(Math.random()*(max-min+1)+min)
 }
-
+function indexAmbosOponentes(jugador,enemigo){
+    indexAtaqueJugador = ataqueJugador[jugador]
+    indexAtaqueEnemigo = ataqueEnemigo[enemigo]
+}
 //COMBATE
 function combatePartida(){
 
-//se creo una cadena de if,ende if.. para que el usuario sepa si gano o perdio e incluso se greo una 
-//let global para que se le muestre al usuario si gana o perde cuantas vidas le quedan en el juego
-    if (ataqueJugador==ataqueEnemigo){
-    combate="EMPATE"
-}else if(ataqueJugador =="M4A1" && ataqueEnemigo =="KAG6"){
-    combate="GANASTE"
-    vidasEnemigo--
-    spanVidasEnemigo.innerHTML=vidasEnemigo
-}else if(ataqueJugador =="AK47"&&ataqueEnemigo =="M4A1"){
-    combate="GANASTE"
-    vidasEnemigo--
-    spanVidasEnemigo.innerHTML=vidasEnemigo
-}else if(ataqueJugador =="KAG6"&&ataqueEnemigo =="AK47"){
-    combate="GANASTE"
-    vidasEnemigo--
-    spanVidasEnemigo.innerHTML=vidasEnemigo
-}else{
-    combate="PERDISTE"
-    vidasJugador--
-    spanVidasJugador.innerHTML=vidasJugador
-}
-crearMensaje()
+    for (let index = 0; index < ataqueJugador.length; index++) {
+        if(ataqueJugador[index]===ataqueEnemigo[index]){
+            indexAmbosOponentes(index, index)
+            crearMensaje("EMPATE")
+            victoriasJugador++
+            spanVidasJugador.innerHTML = victoriasJugador
+        } else if(ataqueJugador[index]==='M4A1'&& ataqueEnemigo[index]==='KAG6'||ataqueJugador[index]==='AK47'&&ataqueEnemigo[index]==='M4A1'||ataqueJugador[index]==='KAG6'&&ataqueEnemigo[index]==='AK47'){
+            indexAmbosOponentes(index, index)
+            crearMensaje("GANASTE")
+            victoriasJugador++
+            spanVidasJugador.innerHTML = victoriasJugador       
+        } else {
+            indexAmbosOponentes(index, index)
+            crearMensaje("PERDISTE")
+            victoriasEnemigo++
+            spanVidasEnemigo.innerHTML=victoriasEnemigo
+        }
+        console.log(victoriasJugador)
+        console.log(victoriasEnemigo)
+        
+    }
+
+
 revisarVidas()
 
 }
 function revisarVidas(){
-    if(vidasEnemigo==0){
+    if(victoriasJugador>victoriasEnemigo){
        GANASTE()
-    }else if(vidasJugador==0){
+    }else if(victoriasJugador<victoriasEnemigo){
         PERDISTE()
+    }else{
+        "EMPATE"
     }
 }
 

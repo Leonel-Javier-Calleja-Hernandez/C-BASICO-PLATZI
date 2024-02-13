@@ -27,10 +27,19 @@
         <section id="ver-mapa">
         <h1 class="tituloMapa">RECORRE EL MAPA</h1>
         <Canvas id="mapa"></Canvas>
-        <button onmouseup="detenerMovimiento()" onmousedown="moverArriba()">ARRIBA</button>
-        <button onmouseup="detenerMovimiento()" onmousedown="moverAbajo()">ABAJO</button>
-        <button onmouseup="detenerMovimiento()" onmousedown="moverDerecha()">DERECHA</button>
-        <button onmouseup="detenerMovimiento()" onmousedown="moverIzquierda()">IZQUIERDA</button>
+        <div id="botones">
+            <div id="izquierda">
+                <button onmouseup="detenerMovimiento()" onmousedown="moverArriba()"> ⬆ </button>
+            </div>
+            <div id="central">
+                <button onmouseup="detenerMovimiento()" onmousedown="moverIzquierda()"> ⬅ </button>
+                <button onmouseup="detenerMovimiento()" onmousedown="moverDerecha()"> ➡ </button>
+            </div>
+            <div id="derecha">
+                <button onmouseup="detenerMovimiento()" onmousedown="moverAbajo()"> ⬇ </button>
+            </div>
+        </div>
+        
         </section>
         
             <section id="SELECCIONAR-ATAQUE" class="fondo-imagen-completo">
@@ -39,15 +48,7 @@
             <h2>Elege tu ARMA</h2>
 
             <div id='contenedorAtaques'>
-                <!-- <button id="boton-M4A1" class="boton-de-ataque">M4A1🗿
-                    <img class="m4a1" src="css\imagenes\m4a1.png" alt="">
-                </button>
-                <button id="boton-AK47" class="boton-de-ataque">AK47📄
-                    <img class="m4a1" src="css\imagenes\ak47.png" alt="">
-                </button>
-                <button id="boton-KAG6" class="boton-de-ataque">KAG-6✂
-                    <img class="m4a1" src="css\imagenes\kag6.png" alt="">
-                </button> -->
+                
             </div>
 
             <div id="MENSAJES"> 

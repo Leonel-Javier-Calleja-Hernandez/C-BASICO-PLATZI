@@ -92,12 +92,15 @@ h2 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #ff0000;
+    background-color: #000000;
    
 }
  
 #mapa{
     border:2px solid white;
+}
+#botones{
+    display: contents;
 }
 
 

@@ -31,6 +31,7 @@ let inputVAL
 let inputZERO
 let inputNACHO
 let mascotasJugador
+let mascotaJugadorObjeto
 // "let ataquesMokepon" nombre de el ataque de la mascota
 let ataquesMokepon
 let ataquesMokeponEnemigo
@@ -149,10 +150,7 @@ function iniciarJuego(){
 
 function seccionarMascotaJugador(){
     
-    // sectionSeleccionarAtaque.style.display = 'flex' 
-    sectionVerMapa.style.display = 'flex'
-    // cree un funtion de iniciar mapa para estar mas ordenado el codigo
-    iniciarMapa()
+
 
     sectionSeleccionarMascota.style.display = 'none'
 
@@ -170,21 +168,24 @@ function seccionarMascotaJugador(){
     }else{
         alert("NO HAS SELECCIONADO A TU MASCOTA :(")
         reiniciarJuego()}
-        //=para buscar y extraer sus ataques
+
+        //sectionSeleccionarAtaque.style.display = 'flex' 
+        sectionVerMapa.style.display = 'flex'
+        //cree un funtion de iniciar mapa para estar mas ordenado el codigo
+        iniciarMapa()
         extraerAtaques(mascotasJugador) 
         seleccionarMascotaEnemigo()
         // "mascotasJugador = inputNombre.id" para que se guarde el nombre de el personaje en la variable
-        // ya que en "spanMascotaJugador.innerHTML= inputVAL.id" solo lo imprime
+    
 }
 // function extraerAtaques(mascotasJugador)=
 function extraerAtaques(mascotasJugador){
     let ataques
     for (let i = 0; i < mokepones.length; i++) {
-        // if(si)(mascotaJugador es igual(==) a mokepones[i]"cunado tenemos un arreglo y le ponemos lo [numero"i"] esto signigica que nos va a regresar el odjet que este en ese indise (numero).nombre as que (ataques) sea ==(igual) mokepones[i].ataques")
         if(mascotasJugador==mokepones[i].nombre){
             ataques = mokepones[i].ataques
         }
-        
+          // if(si)(mascotaJugador es igual(==) a mokepones[i]"cunado tenemos un arreglo y le ponemos lo [numero"i"] esto signigica que nos va a regresar el odjet que este en ese indise (numero) .nombre has que (ataques) sea ==(igual) mokepones[i].ataques")
     }
     mostrarAtaques(ataques)
     // console.log(ataques)
@@ -365,8 +366,10 @@ function reiniciarJuego(){
 }
 // "pintarCanvas" agrega la imagen
 function pintarCanvas(){
-    VAL.x = VAL.x + VAL.velocidadX
-    VAL.y = VAL.y + VAL.velocidadY
+    console.log(mascotaJugadorObjeto)
+
+    mascotaJugadorObjeto.x = mascotaJugadorObjeto.x + mascotaJugadorObjeto.velocidadX
+    mascotaJugadorObjeto.y = mascotaJugadorObjeto.y + mascotaJugadorObjeto.velocidadY
     lienzo.clearRect(0,0, mapa.width,mapa.height)
     // "lienzo.clearRect(0,0, mapa.width,mapa.height)" limpi el canvas dando la ilucion de movimiento
     lienzo.drawImage(
@@ -377,32 +380,32 @@ function pintarCanvas(){
         mapa.height
     )
     lienzo.drawImage(
-        VAL.mapaFoto,
-        VAL.x,
-        VAL.y,
-        VAL.ancho,
-        VAL.alto,
+        mascotaJugadorObjeto.mapaFoto,
+        mascotaJugadorObjeto.x,
+        mascotaJugadorObjeto.y,
+        mascotaJugadorObjeto.ancho,
+        mascotaJugadorObjeto.alto,
     )
 }
 
 // MOVER = le estamos asignando una velocidad con(velocidadX,velocidadY) al personaje y al mantenerlo presionado este se mueve
 // hasta que se suelte y se detiene con la funcion detenerMovmiento
 function moverArriba(){
-VAL.velocidadY = -5
+mascotaJugadorObjeto.velocidadY = -5
 }
 function moverAbajo(){
-    VAL.velocidadY = 5
+    mascotaJugadorObjeto.velocidadY = 5
     }
 function moverDerecha(){
-    VAL.velocidadX = 5
+    mascotaJugadorObjeto.velocidadX = 5
     }
 function moverIzquierda(){
-    VAL.velocidadX = -5 
+    mascotaJugadorObjeto.velocidadX = -5 
     }       
     
 function detenerMovimiento(){
-    VAL.velocidadX = 0
-    VAL.velocidadY = 0
+    mascotaJugadorObjeto.velocidadX = 0
+    mascotaJugadorObjeto.velocidadY = 0
 }
 // AL PRESIONAR LAS TECHAS EL PERSONAJE EJECUTA LA FUNCION CORRESPONDIENTE
 function sePresionoTecla(event){
@@ -428,15 +431,25 @@ function sePresionoTecla(event){
 }
 
 function iniciarMapa(){
+    console.log(mascotaJugadorObjeto,mascotasJugador)
+    mapa.width = 650
+    mapa.height = 450 
+    mascotaJugadorObjeto=odtenerObjetoMascota()
     intervalo = setInterval(pintarCanvas,50)
     // con setInterval se le invica que cada 50 milisegundos ejecute la funcion de pintar a el personaje y esto significa que cada 50 milsegundos cambia de posicion aumnetando su velocida 
+    
     window.addEventListener('keydown', sePresionoTecla)
-    window.addEventListener('keyup', detenerMovimiento)
-    mapa.width = 700
-    mapa.height = 500
 
+    window.addEventListener('keyup', detenerMovimiento)
 
 }
 
+function odtenerObjetoMascota(){
+    for (let i = 0; i < mokepones.length; i++) {
+        if(mascotasJugador==mokepones[i].nombre){
+            return mokepones[i]
+        }
+}
+}
 
 window.addEventListener('load', iniciarJuego)

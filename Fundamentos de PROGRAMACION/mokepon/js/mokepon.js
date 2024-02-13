@@ -47,7 +47,10 @@ let vidasEnemigo = 3
 let vidasJugador = 3
 let lienzo = mapa.getContext("2d")
 let intervalo
-// let lienzo = mapa.getContext("2d") nos permite usar el lienzo para dibujar en el canvas
+let mapaBackground = new Image()
+mapaBackground.src = 'css/imagenes/MAPA.jpg'
+
+
 
 // clase
 class Mokepon{
@@ -148,10 +151,8 @@ function seccionarMascotaJugador(){
     
     // sectionSeleccionarAtaque.style.display = 'flex' 
     sectionVerMapa.style.display = 'flex'
-    intervalo = setInterval(pintarPersonaje,50)
-    // con setInterval se le invica que cada 50 milisegundos ejecute la funcion de pintar a el personaje y esto significa que cada 50 milsegundos cambia de posicion aumnetando su velocida 
-    window.addEventListener('keydown', sePresionoTecla)
-    window.addEventListener('keyup', detenerMovimiento)
+    // cree un funtion de iniciar mapa para estar mas ordenado el codigo
+    iniciarMapa()
 
     sectionSeleccionarMascota.style.display = 'none'
 
@@ -362,12 +363,19 @@ function reiniciarJuego(){
     //"location.reload()" recarga la pagina Actual 
     location.reload()
 }
-// "pintarPersonaje" agrega la imagen
-function pintarPersonaje(){
+// "pintarCanvas" agrega la imagen
+function pintarCanvas(){
     VAL.x = VAL.x + VAL.velocidadX
     VAL.y = VAL.y + VAL.velocidadY
     lienzo.clearRect(0,0, mapa.width,mapa.height)
     // "lienzo.clearRect(0,0, mapa.width,mapa.height)" limpi el canvas dando la ilucion de movimiento
+    lienzo.drawImage(
+        mapaBackground,
+        0,
+        0,
+        mapa.width,
+        mapa.height
+    )
     lienzo.drawImage(
         VAL.mapaFoto,
         VAL.x,
@@ -396,25 +404,36 @@ function detenerMovimiento(){
     VAL.velocidadX = 0
     VAL.velocidadY = 0
 }
-
+// AL PRESIONAR LAS TECHAS EL PERSONAJE EJECUTA LA FUNCION CORRESPONDIENTE
 function sePresionoTecla(event){
     console.log(event.key);
     switch (event.key) {
-        case 'ArrowUp':
+        case 'ArrowUp': 
             moverArriba()
-            break;
+            break
         case 'ArrowDown':
             moverAbajo()
-            break;
+            break
         case 'ArrowRight':
         moverDerecha()
-            break;
+            break
         case 'ArrowLeft':
         moverIzquierda()
-            break;
+            break
         default:
-            break;
+            break
     }
+
+
+}
+
+function iniciarMapa(){
+    intervalo = setInterval(pintarCanvas,50)
+    // con setInterval se le invica que cada 50 milisegundos ejecute la funcion de pintar a el personaje y esto significa que cada 50 milsegundos cambia de posicion aumnetando su velocida 
+    window.addEventListener('keydown', sePresionoTecla)
+    window.addEventListener('keyup', detenerMovimiento)
+    mapa.width = 700
+    mapa.height = 500
 
 
 }

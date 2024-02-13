@@ -78,14 +78,14 @@ h2 {
     font-family: 'Anton', sans-serif;
 }
 
-.tituloMapa{
+.tituloMapa {
     color: rgb(255, 255, 255);
-    width: 280px;
-    height: 50px;
+    width: 167px;
+    height: 20px;
     background-color: #00c2ff;
     border-radius: 15px;
-    padding: 50px;
-    font-size: 38px;
+    padding: 25px;
+    font-size: 25px;
 }
 #ver-mapa{
     display: flex;

@@ -149,6 +149,9 @@ function seccionarMascotaJugador(){
     // sectionSeleccionarAtaque.style.display = 'flex' 
     sectionVerMapa.style.display = 'flex'
     intervalo = setInterval(pintarPersonaje,50)
+    // con setInterval se le invica que cada 50 milisegundos ejecute la funcion de pintar a el personaje y esto significa que cada 50 milsegundos cambia de posicion aumnetando su velocida 
+    window.addEventListener('keydown', sePresionoTecla)
+    window.addEventListener('keyup', detenerMovimiento)
 
     sectionSeleccionarMascota.style.display = 'none'
 
@@ -374,7 +377,8 @@ function pintarPersonaje(){
     )
 }
 
-// MOVER
+// MOVER = le estamos asignando una velocidad con(velocidadX,velocidadY) al personaje y al mantenerlo presionado este se mueve
+// hasta que se suelte y se detiene con la funcion detenerMovmiento
 function moverArriba(){
 VAL.velocidadY = -5
 }
@@ -392,4 +396,28 @@ function detenerMovimiento(){
     VAL.velocidadX = 0
     VAL.velocidadY = 0
 }
+
+function sePresionoTecla(event){
+    console.log(event.key);
+    switch (event.key) {
+        case 'ArrowUp':
+            moverArriba()
+            break;
+        case 'ArrowDown':
+            moverAbajo()
+            break;
+        case 'ArrowRight':
+        moverDerecha()
+            break;
+        case 'ArrowLeft':
+        moverIzquierda()
+            break;
+        default:
+            break;
+    }
+
+
+}
+
+
 window.addEventListener('load', iniciarJuego)

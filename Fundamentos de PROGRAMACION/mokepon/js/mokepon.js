@@ -61,28 +61,46 @@ class Mokepon{
         this.vidas = vidas
         this.ataques = []
         // le agrege las dimenciones de la imagen, tambien la funcion de pintar la imagen  y que se mueva asi la derecha
-        this.x = 20
-        this.y = 30
+        this.x = x
+        this.y = y
         this.ancho = 80
         this.alto = 80
         this.mapaFoto = new Image()
         this.mapaFoto.src = fotoMapa
         this.velocidadX = 0
         this.velocidadY = 0
-
+        // cree otro this que cambia la imagen del personaje seleccionado y muestra una imagen que representa a el personaje
         // this = esto mismo "EL.nombre es = a nombre"
+    }
+    pintarMokepon(){
+        lienzo.drawImage(
+            this.mapaFoto,
+            this.x,
+            this.y,
+            this.ancho,
+            this.alto,
+        )
     }
 
 }
 
-// Objetos
+// Objetos del jugador
 let VAL = new Mokepon('Val',"css/imagenes/val1.png",5,"css/imagenes/valA.png")
-// par colocar la url de img se se utilizan "/" ya que en el html es diferente per se utiliza es esta 
 
 let ZERO =new Mokepon('Zero','css/imagenes/zero2.png',5,"css/imagenes/zeroA.png")
 
 let NACHO = new Mokepon('Nacho','css/imagenes/nacho3.png',5,"css/imagenes/nachoA.png")
  
+// objetos del enemigo
+let VALEnemigo = new Mokepon('Val',"css/imagenes/val1.png",5,"css/imagenes/valA.png",130,180)
+
+let ZEROEnemigo =new Mokepon('Zero','css/imagenes/zero2.png',5,"css/imagenes/zeroA.png",475,35)
+
+let NACHOEnemigo = new Mokepon('Nacho','css/imagenes/nacho3.png',5,"css/imagenes/nachoA.png",475,345)
+
+
+
+
 VAL.ataques.push(
     {nombre:'🗿',id:'boton-M4A1',imagenAtaque:'css/imagenes/m4a1.png'},
     {nombre:'🗿',id:'boton-M4A1',imagenAtaque:'css/imagenes/m4a1.png'},
@@ -208,8 +226,7 @@ function mostrarAtaques(ataques){
 
 
 }
-// Eventos de click dinamicos= fuciona"solucionar IMG"
-// SOLUCIONADO IMG= ANTES AL TOCARLA IMAGEN EL CODIGO ENTENDIA QUE NO AVIA SELECCIONADO NADA ENTONSES automaticamente se selecccionada el else con el "||e.target.alt==='📄'" su funcion es como 2 condicion que en este caso seria la img y quite el else ya que si mas a futuro se le agrega algo a los botones no de problemas
+// Eventos de click dinamicos
 // NOTA=utilizar el console.log para solucionar errores y saber usarlo 
 function secuenciaAtaque(){
     botones.forEach((boton)=> {
@@ -366,7 +383,7 @@ function reiniciarJuego(){
 }
 // "pintarCanvas" agrega la imagen
 function pintarCanvas(){
-    console.log(mascotaJugadorObjeto)
+    console.log(mascotaJugadorObjeto.x,mascotaJugadorObjeto.y)
 
     mascotaJugadorObjeto.x = mascotaJugadorObjeto.x + mascotaJugadorObjeto.velocidadX
     mascotaJugadorObjeto.y = mascotaJugadorObjeto.y + mascotaJugadorObjeto.velocidadY
@@ -379,13 +396,10 @@ function pintarCanvas(){
         mapa.width,
         mapa.height
     )
-    lienzo.drawImage(
-        mascotaJugadorObjeto.mapaFoto,
-        mascotaJugadorObjeto.x,
-        mascotaJugadorObjeto.y,
-        mascotaJugadorObjeto.ancho,
-        mascotaJugadorObjeto.alto,
-    )
+   mascotaJugadorObjeto.pintarMokepon()
+   VALEnemigo.pintarMokepon()
+   ZEROEnemigo.pintarMokepon()
+   NACHOEnemigo.pintarMokepon()
 }
 
 // MOVER = le estamos asignando una velocidad con(velocidadX,velocidadY) al personaje y al mantenerlo presionado este se mueve

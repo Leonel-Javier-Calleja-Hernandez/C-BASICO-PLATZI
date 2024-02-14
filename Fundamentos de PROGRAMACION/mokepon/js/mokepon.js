@@ -109,6 +109,14 @@ VAL.ataques.push(
     {nombre:'✂',id:'boton-KAG6',imagenAtaque:'css/imagenes/kag6.png'},
 )
 
+VALEnemigo.ataques.push(
+    {nombre:'🗿',id:'boton-M4A1',imagenAtaque:'css/imagenes/m4a1.png'},
+    {nombre:'🗿',id:'boton-M4A1',imagenAtaque:'css/imagenes/m4a1.png'},
+    {nombre:'🗿',id:'boton-M4A1',imagenAtaque:'css/imagenes/m4a1.png'},
+    {nombre:'📄',id:'boton-AK47',imagenAtaque:'css/imagenes/ak47.png'},
+    {nombre:'✂',id:'boton-KAG6',imagenAtaque:'css/imagenes/kag6.png'},
+)
+
 ZERO.ataques.push(
     {nombre:'✂',id:'boton-KAG6',imagenAtaque:'css/imagenes/kag6.png'},
     {nombre:'✂',id:'boton-KAG6',imagenAtaque:'css/imagenes/kag6.png'},
@@ -118,7 +126,24 @@ ZERO.ataques.push(
     
 )
 
+ZEROEnemigo.ataques.push(
+    {nombre:'✂',id:'boton-KAG6',imagenAtaque:'css/imagenes/kag6.png'},
+    {nombre:'✂',id:'boton-KAG6',imagenAtaque:'css/imagenes/kag6.png'},
+    {nombre:'✂',id:'boton-KAG6',imagenAtaque:'css/imagenes/kag6.png'},
+    {nombre:'🗿',id:'boton-M4A1',imagenAtaque:'css/imagenes/m4a1.png'},
+    {nombre:'📄',id:'boton-AK47',imagenAtaque:'css/imagenes/ak47.png'},
+    
+)
+
 NACHO.ataques.push(
+    {nombre:'📄',id:'boton-AK47',imagenAtaque:'css/imagenes/ak47.png'},
+    {nombre:'📄',id:'boton-AK47',imagenAtaque:'css/imagenes/ak47.png'},
+    {nombre:'📄',id:'boton-AK47',imagenAtaque:'css/imagenes/ak47.png'},
+    {nombre:'🗿',id:'boton-M4A1',imagenAtaque:'css/imagenes/m4a1.png'},
+    {nombre:'✂',id:'boton-KAG6',imagenAtaque:'css/imagenes/kag6.png'},
+)
+
+NACHOEnemigo.ataques.push(
     {nombre:'📄',id:'boton-AK47',imagenAtaque:'css/imagenes/ak47.png'},
     {nombre:'📄',id:'boton-AK47',imagenAtaque:'css/imagenes/ak47.png'},
     {nombre:'📄',id:'boton-AK47',imagenAtaque:'css/imagenes/ak47.png'},
@@ -187,12 +212,12 @@ function seccionarMascotaJugador(){
         alert("NO HAS SELECCIONADO A TU MASCOTA :(")
         reiniciarJuego()}
 
-        //sectionSeleccionarAtaque.style.display = 'flex' 
+        
         sectionVerMapa.style.display = 'flex'
         //cree un funtion de iniciar mapa para estar mas ordenado el codigo
         iniciarMapa()
         extraerAtaques(mascotasJugador) 
-        seleccionarMascotaEnemigo()
+
         // "mascotasJugador = inputNombre.id" para que se guarde el nombre de el personaje en la variable
     
 }
@@ -255,16 +280,17 @@ function secuenciaAtaque(){
    
 }
 // se combirtio la seleccionarMascotaEnemigo() en un afuente de verdad
-function seleccionarMascotaEnemigo(){
-    let mascotaEnemiga=aleatorio(0, mokepones.length -1)
-    spanMascotaEnemigo.innerHTML = mokepones[mascotaEnemiga].nombre
-    ataquesMokeponEnemigo = mokepones[mascotaEnemiga].ataques
+function seleccionarMascotaEnemigo(enemigo){
+    // let mascotaEnemiga=aleatorio(0, mokepones.length -1)
+    spanMascotaEnemigo.innerHTML = enemigo.nombre
+    ataquesMokeponEnemigo = enemigo.ataques
     secuenciaAtaque()
 }
 
 
 //  'function ataqueAleatorioEnemigo()' ya se esta guardando en el arreglo ataqueEnemigo en fila
     function ataqueAleatorioEnemigo(){
+        console.log("ataques MOK E",ataquesMokeponEnemigo);
         let ataqueAleatorio=aleatorio(0, ataquesMokeponEnemigo.length -1)
 
         if(ataqueAleatorio == 0 || ataqueAleatorio ==1 ){
@@ -383,7 +409,7 @@ function reiniciarJuego(){
 }
 // "pintarCanvas" agrega la imagen
 function pintarCanvas(){
-    console.log(mascotaJugadorObjeto.x,mascotaJugadorObjeto.y)
+    // console.log(mascotaJugadorObjeto.x,mascotaJugadorObjeto.y)
 
     mascotaJugadorObjeto.x = mascotaJugadorObjeto.x + mascotaJugadorObjeto.velocidadX
     mascotaJugadorObjeto.y = mascotaJugadorObjeto.y + mascotaJugadorObjeto.velocidadY
@@ -401,6 +427,7 @@ function pintarCanvas(){
    VALEnemigo.pintarMokepon()
    ZEROEnemigo.pintarMokepon()
    NACHOEnemigo.pintarMokepon()
+//  si la mascotaJugadorObjeto se mueve entonses se invocan las funtion revisarColision
    if(mascotaJugadorObjeto.velocidadY !== 0 || mascotaJugadorObjeto.velocidadX !== 0){
     revisarColision(VALEnemigo)
     revisarColision(ZEROEnemigo)
@@ -471,7 +498,7 @@ function odtenerObjetoMascota(){
         }
 }
 }
-
+//con la "function revisarColision(enemigo)" primero se crea unas const que tenga el valir de arriba,abajo,izquierda y derecha de el jugador y de el enemigo.  
 function revisarColision(enemigo){
     const arribaEnemigo = enemigo.y
     const abajoEnemigo = enemigo.y + enemigo.alto
@@ -487,7 +514,7 @@ function revisarColision(enemigo){
     const izquierdaMascota = 
         mascotaJugadorObjeto.x
 
-
+// se comparan 
     if(
         abajoMascota < arribaEnemigo ||
         arribaMascota > abajoEnemigo ||
@@ -496,8 +523,12 @@ function revisarColision(enemigo){
     ){
       return
     }
-    alert("hay una colision " + enemigo.nombre + enemigo.foto)
+    clearInterval(intervalo)
+    console.log("se detecto colision");
+   sectionSeleccionarAtaque.style.display = 'flex'
+   sectionVerMapa.style.display = 'none' 
     detenerMovimiento()
+    seleccionarMascotaEnemigo(enemigo)
 }
 
 window.addEventListener('load', iniciarJuego)

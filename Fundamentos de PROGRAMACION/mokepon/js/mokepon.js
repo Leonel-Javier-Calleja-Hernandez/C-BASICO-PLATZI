@@ -55,7 +55,7 @@ mapaBackground.src = 'css/imagenes/MAPA.jpg'
 
 // clase
 class Mokepon{
-    constructor(nombre, foto, vidas){
+    constructor(nombre, foto, vidas, fotoMapa, x= 10, y=10){
         this.nombre = nombre
         this.foto = foto
         this.vidas = vidas
@@ -66,7 +66,7 @@ class Mokepon{
         this.ancho = 80
         this.alto = 80
         this.mapaFoto = new Image()
-        this.mapaFoto.src = foto
+        this.mapaFoto.src = fotoMapa
         this.velocidadX = 0
         this.velocidadY = 0
 
@@ -76,12 +76,12 @@ class Mokepon{
 }
 
 // Objetos
-let VAL = new Mokepon('Val',"css/imagenes/val1.png",5)
+let VAL = new Mokepon('Val',"css/imagenes/val1.png",5,"css/imagenes/valA.png")
 // par colocar la url de img se se utilizan "/" ya que en el html es diferente per se utiliza es esta 
 
-let ZERO =new Mokepon('Zero','css/imagenes/zero2.png',5)
+let ZERO =new Mokepon('Zero','css/imagenes/zero2.png',5,"css/imagenes/zeroA.png")
 
-let NACHO = new Mokepon('Nacho','css/imagenes/nacho3.png',5)
+let NACHO = new Mokepon('Nacho','css/imagenes/nacho3.png',5,"css/imagenes/nachoA.png")
  
 VAL.ataques.push(
     {nombre:'🗿',id:'boton-M4A1',imagenAtaque:'css/imagenes/m4a1.png'},

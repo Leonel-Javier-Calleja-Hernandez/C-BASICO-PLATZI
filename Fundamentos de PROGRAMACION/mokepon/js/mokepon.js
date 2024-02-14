@@ -396,10 +396,16 @@ function pintarCanvas(){
         mapa.width,
         mapa.height
     )
+// se pintan a los enemigos y al personaje con el array ".pintarMokepon()"en el mapa llamando a el 
    mascotaJugadorObjeto.pintarMokepon()
    VALEnemigo.pintarMokepon()
    ZEROEnemigo.pintarMokepon()
    NACHOEnemigo.pintarMokepon()
+   if(mascotaJugadorObjeto.velocidadY !== 0 || mascotaJugadorObjeto.velocidadX !== 0){
+    revisarColision(VALEnemigo)
+    revisarColision(ZEROEnemigo)
+    revisarColision(NACHOEnemigo)
+   }
 }
 
 // MOVER = le estamos asignando una velocidad con(velocidadX,velocidadY) al personaje y al mantenerlo presionado este se mueve
@@ -464,6 +470,34 @@ function odtenerObjetoMascota(){
             return mokepones[i]
         }
 }
+}
+
+function revisarColision(enemigo){
+    const arribaEnemigo = enemigo.y
+    const abajoEnemigo = enemigo.y + enemigo.alto
+    const derechaEnemigo = enemigo.x + enemigo.ancho
+    const izquierdaEnemigo = enemigo.x
+
+    const arribaMascota = 
+        mascotaJugadorObjeto.y
+    const abajoMascota = 
+        mascotaJugadorObjeto.y + mascotaJugadorObjeto.alto
+    const derechaMascota =
+        mascotaJugadorObjeto.x + mascotaJugadorObjeto.ancho
+    const izquierdaMascota = 
+        mascotaJugadorObjeto.x
+
+
+    if(
+        abajoMascota < arribaEnemigo ||
+        arribaMascota > abajoEnemigo ||
+        derechaMascota < izquierdaEnemigo ||
+        izquierdaMascota > derechaEnemigo
+    ){
+      return
+    }
+    alert("hay una colision " + enemigo.nombre + enemigo.foto)
+    detenerMovimiento()
 }
 
 window.addEventListener('load', iniciarJuego)

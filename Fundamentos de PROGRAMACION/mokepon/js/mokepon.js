@@ -64,13 +64,13 @@ mapaBackground.src = 'css/imagenes/MAPA.jpg'
 
 // clase
 class Mokepon{
-    constructor(nombre, foto, vidas, fotoMapa, x= 10, y=10){
+    constructor(nombre, foto, vidas, fotoMapa,){
         this.nombre = nombre
         this.foto = foto
         this.vidas = vidas
         this.ataques = []
-        this.ancho = 80
-        this.alto = 80
+        this.ancho = 60
+        this.alto = 60
         // le agrege las dimenciones de la imagen, tambien la funcion de pintar la imagen  y que se mueva asi la derecha
         this.x = aleatorio(0, mapa.width-this.ancho)
         this.y = aleatorio(0, mapa.height-this.alto)
@@ -101,11 +101,11 @@ let ZERO =new Mokepon('Zero','css/imagenes/zero2.png',5,"css/imagenes/zeroA.png"
 let NACHO = new Mokepon('Nacho','css/imagenes/nacho3.png',5,"css/imagenes/nachoA.png")
  
 // objetos del enemigo
-let VALEnemigo = new Mokepon('Val',"css/imagenes/val1.png",5,"css/imagenes/valA.png",130,180)
+let VALEnemigo = new Mokepon('Val',"css/imagenes/val1.png",5,"css/imagenes/valA.png",)
 
-let ZEROEnemigo =new Mokepon('Zero','css/imagenes/zero2.png',5,"css/imagenes/zeroA.png",475,35)
+let ZEROEnemigo =new Mokepon('Zero','css/imagenes/zero2.png',5,"css/imagenes/zeroA.png",)
 
-let NACHOEnemigo = new Mokepon('Nacho','css/imagenes/nacho3.png',5,"css/imagenes/nachoA.png",475,345)
+let NACHOEnemigo = new Mokepon('Nacho','css/imagenes/nacho3.png',5,"css/imagenes/nachoA.png",)
 
 
 
@@ -490,7 +490,7 @@ function iniciarMapa(){
 
 let alturaQueBuscamos
 let anchoDelMapa = window.innerWidth -20
-const anchoMaximoDelMapa = 350
+const anchoMaximoDelMapa = 360
 
 if (anchoDelMapa > anchoMaximoDelMapa){
     anchoDelMapa = anchoMaximoDelMapa - 20

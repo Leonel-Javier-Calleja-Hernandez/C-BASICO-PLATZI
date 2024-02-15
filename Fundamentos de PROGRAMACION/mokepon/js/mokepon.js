@@ -51,7 +51,16 @@ let intervalo
 let mapaBackground = new Image()
 mapaBackground.src = 'css/imagenes/MAPA.jpg'
 
+// let alturaQueBuscamos
+// let anchoDelMapa = window.innerWidth -20
+// let anchoMaximoDelMapa = 350
+// if (anchoDelMapa > anchoMaximoDelMapa){
+//     anchoMaximoDelMapa = anchoMaximoDelMapa - 20
+// }
+// alturaQueBuscamos = anchoDelMapa * 450 / 650
 
+// mapa.width = anchoDelMapa
+// mapa.height = alturaQueBuscamos
 
 // clase
 class Mokepon{
@@ -60,11 +69,11 @@ class Mokepon{
         this.foto = foto
         this.vidas = vidas
         this.ataques = []
-        // le agrege las dimenciones de la imagen, tambien la funcion de pintar la imagen  y que se mueva asi la derecha
-        this.x = x
-        this.y = y
         this.ancho = 80
         this.alto = 80
+        // le agrege las dimenciones de la imagen, tambien la funcion de pintar la imagen  y que se mueva asi la derecha
+        this.x = aleatorio(0, mapa.width-this.ancho)
+        this.y = aleatorio(0, mapa.height-this.alto)
         this.mapaFoto = new Image()
         this.mapaFoto.src = fotoMapa
         this.velocidadX = 0
@@ -100,7 +109,7 @@ let NACHOEnemigo = new Mokepon('Nacho','css/imagenes/nacho3.png',5,"css/imagenes
 
 
 
-
+// se creo la lista de ataques de los enemigos 
 VAL.ataques.push(
     {nombre:'🗿',id:'boton-M4A1',imagenAtaque:'css/imagenes/m4a1.png'},
     {nombre:'🗿',id:'boton-M4A1',imagenAtaque:'css/imagenes/m4a1.png'},
@@ -478,9 +487,21 @@ function sePresionoTecla(event){
 }
 
 function iniciarMapa(){
+
+let alturaQueBuscamos
+let anchoDelMapa = window.innerWidth -20
+const anchoMaximoDelMapa = 350
+
+if (anchoDelMapa > anchoMaximoDelMapa){
+    anchoDelMapa = anchoMaximoDelMapa - 20
+}
+
+alturaQueBuscamos = anchoDelMapa * 600 / 800
+
+mapa.width = anchoDelMapa
+mapa.height = alturaQueBuscamos
     console.log(mascotaJugadorObjeto,mascotasJugador)
-    mapa.width = 650
-    mapa.height = 450 
+
     mascotaJugadorObjeto=odtenerObjetoMascota()
     intervalo = setInterval(pintarCanvas,50)
     // con setInterval se le invica que cada 50 milisegundos ejecute la funcion de pintar a el personaje y esto significa que cada 50 milsegundos cambia de posicion aumnetando su velocida 
@@ -523,9 +544,11 @@ function revisarColision(enemigo){
     ){
       return
     }
+    // clearInterval(intervalo) DE TIENE LAS IMPRESIONES DE EL MAPA 
     clearInterval(intervalo)
     console.log("se detecto colision");
    sectionSeleccionarAtaque.style.display = 'flex'
+//    OCULTAMOS EL MAPA
    sectionVerMapa.style.display = 'none' 
     detenerMovimiento()
     seleccionarMascotaEnemigo(enemigo)

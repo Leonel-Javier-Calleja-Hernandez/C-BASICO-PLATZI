@@ -22,6 +22,7 @@ const contenedorAtaques= document.getElementById('contenedorAtaques')
 const sectionVerMapa = document.getElementById("ver-mapa")
 const mapa = document.getElementById("mapa")
 
+let jugadorId = null
 let mokepones = []
 let ataqueJugador =[]
 let ataqueEnemigo =[]
@@ -195,7 +196,9 @@ function iniciarJuego(){
 
     unirseAlJuego()
 }
-
+//En este caso, la función fetch está haciendo una solicitud GET  por defecto a la URL proporcionada. Una vez que se recibe la respuesta del servidor, se ejecuta la lógica dentro del método .then para manejar esa respuesta.
+//Dentro de .then, se verifica si la respuesta es exitosa utilizando la propiedad "ok" de la respuesta. Si la respuesta es exitosa, se procede a obtener el cuerpo de la respuesta como texto utilizando el método res.text().
+//  si la respuesta es exitosa, obtiene el cuerpo de la respuesta como texto y lo imprime en la consola.
 function unirseAlJuego(){
     fetch("http://localhost:8080/unirse")
         .then(function (res) {
@@ -204,6 +207,7 @@ function unirseAlJuego(){
                     res.text()
                     .then(function (respuesta){
                         console.log(respuesta)
+                        jugadorId = respuesta
                     })
 
             }
@@ -232,15 +236,24 @@ function seccionarMascotaJugador(){
     }else{
         alert("NO HAS SELECCIONADO A TU MASCOTA :(")
         reiniciarJuego()}
-
-        
         sectionVerMapa.style.display = 'flex'
-        //cree un funtion de iniciar mapa para estar mas ordenado el codigo
         iniciarMapa()
         extraerAtaques(mascotasJugador) 
-
-        // "mascotasJugador = inputNombre.id" para que se guarde el nombre de el personaje en la variable
+        seleccionarMokepon(mascotasJugador)
     
+}
+
+function seleccionarMokepon(mascotaJugador){
+    fetch(`http://localhost:8080/mokepon/${jugadorId}` ,{
+        method: "post",
+        Headers: {
+            "Content-Type":"application/json"
+        },
+        body: JSON.stringify({
+            mokepon: mascotaJugador
+        })
+    })
+    console.log(mascotaJugador);
 }
 // function extraerAtaques(mascotasJugador)=
 function extraerAtaques(mascotasJugador){

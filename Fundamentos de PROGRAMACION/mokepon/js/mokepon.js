@@ -485,6 +485,14 @@ function enviarPosicion(x, y) {
             y
         })
     })
+    .then(function (res) {
+        if (res.ok) {
+            res.json()
+                .then(function({ enemigos }){
+                    console.log(enemigos);
+                })
+        }
+    })
 }
 
 // MOVER = le estamos asignando una velocidad con(velocidadX,velocidadY) al personaje y al mantenerlo presionado este se mueve

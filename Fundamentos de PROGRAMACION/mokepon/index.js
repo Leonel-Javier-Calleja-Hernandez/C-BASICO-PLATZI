@@ -13,7 +13,15 @@ class Jugador{
     constructor(id){
         this.id =id
     }
+    asignarMokepon(mokepon){
+        this.mokepon = mokepon
+    }
+}
 
+class Mokepon{
+    constructor(nombre){
+        this.nombre = nombre
+    }
 }
 
 app.get("/unirse", (req,res) => {
@@ -31,11 +39,19 @@ app.get("/unirse", (req,res) => {
 
 app.post("/mokepon/:jugadorId",(req, res)=>{
     const jugadorId = req.params.jugadorId || ""
+    const nombre = req.body.mokepon || "fallo:("
+    const mokepon = new Mokepon(nombre)
+
+    const jugadorIndex = jugadores.findIndex((jugador) => jugadorId === jugador.id)
+    if (jugadorIndex >= 0){
+        jugadores[jugadorIndex].asignarMokepon(mokepon)
+    }
     console.log(jugadores)
     console.log(jugadorId)
+  
     res.end()
 })
-
+// console.log(mokepon);
 app.listen(8080, ()=>{
     console.log("hola mundo");
     console.log("el servidor ya funciona :)");

@@ -236,6 +236,7 @@ function seccionarMascotaJugador(){
     }else{
         alert("NO HAS SELECCIONADO A TU MASCOTA :(")
         reiniciarJuego()}
+
         sectionVerMapa.style.display = 'flex'
         iniciarMapa()
         extraerAtaques(mascotasJugador) 
@@ -246,14 +247,16 @@ function seccionarMascotaJugador(){
 function seleccionarMokepon(mascotaJugador){
     fetch(`http://localhost:8080/mokepon/${jugadorId}` ,{
         method: "post",
-        Headers: {
+        headers: {
             "Content-Type":"application/json"
         },
+        // se manda el json por el body convertimos el JSON en un acadena de texto por "JSON.stringify" ya que el body solo reconose cadenas de texto y le ponemos el nombre de clave(mokepon) y  en el backend de ve ser la misma clave que le pusimos y se le manda el valor de mascotaJugador mandando el fetch con el "jugadorId"
         body: JSON.stringify({
             mokepon: mascotaJugador
         })
+        
     })
-    console.log(mascotaJugador);
+    console.log(mokepon);
 }
 // function extraerAtaques(mascotasJugador)=
 function extraerAtaques(mascotasJugador){
@@ -525,7 +528,7 @@ alturaQueBuscamos = anchoDelMapa * 600 / 800
 
 mapa.width = anchoDelMapa
 mapa.height = alturaQueBuscamos
-    console.log(mascotaJugadorObjeto,mascotasJugador)
+    
 
     mascotaJugadorObjeto=odtenerObjetoMascota()
     intervalo = setInterval(pintarCanvas,50)
@@ -534,7 +537,7 @@ mapa.height = alturaQueBuscamos
     window.addEventListener('keydown', sePresionoTecla)
 
     window.addEventListener('keyup', detenerMovimiento)
-
+    console.log(mascotaJugadorObjeto,mascotasJugador)
 }
 
 function odtenerObjetoMascota(){

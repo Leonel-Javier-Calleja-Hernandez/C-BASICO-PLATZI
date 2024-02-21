@@ -256,7 +256,7 @@ function seleccionarMokepon(mascotaJugador){
         })
         
     })
-    console.log(mokepon);
+    
 }
 // function extraerAtaques(mascotasJugador)=
 function extraerAtaques(mascotasJugador){
@@ -461,15 +461,30 @@ function pintarCanvas(){
     )
 // se pintan a los enemigos y al personaje con el array ".pintarMokepon()"en el mapa llamando a el 
    mascotaJugadorObjeto.pintarMokepon()
+   
    VALEnemigo.pintarMokepon()
    ZEROEnemigo.pintarMokepon()
    NACHOEnemigo.pintarMokepon()
+   enviarPosicion(mascotaJugadorObjeto.x, mascotaJugadorObjeto.y)
 //  si la mascotaJugadorObjeto se mueve entonses se invocan las funtion revisarColision
    if(mascotaJugadorObjeto.velocidadY !== 0 || mascotaJugadorObjeto.velocidadX !== 0){
     revisarColision(VALEnemigo)
     revisarColision(ZEROEnemigo)
     revisarColision(NACHOEnemigo)
    }
+}
+
+function enviarPosicion(x, y) {
+    fetch(`http://localhost:8080/mokepon/${jugadorId}/posicion`, {
+        method: "post",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            x,
+            y
+        })
+    })
 }
 
 // MOVER = le estamos asignando una velocidad con(velocidadX,velocidadY) al personaje y al mantenerlo presionado este se mueve

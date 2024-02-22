@@ -52,20 +52,20 @@ let intervalo
 let mapaBackground = new Image()
 mapaBackground.src = 'css/imagenes/MAPA.jpg'
 
-// let alturaQueBuscamos
-// let anchoDelMapa = window.innerWidth -20
-// let anchoMaximoDelMapa = 350
-// if (anchoDelMapa > anchoMaximoDelMapa){
-//     anchoMaximoDelMapa = anchoMaximoDelMapa - 20
-// }
-// alturaQueBuscamos = anchoDelMapa * 450 / 650
+let alturaQueBuscamos
+let anchoDelMapa = window.innerWidth -20
+let anchoMaximoDelMapa = 350
+if (anchoDelMapa > anchoMaximoDelMapa){
+    anchoMaximoDelMapa = anchoMaximoDelMapa - 20
+}
+alturaQueBuscamos = anchoDelMapa * 450 / 650
 
-// mapa.width = anchoDelMapa
-// mapa.height = alturaQueBuscamos
+mapa.width = anchoDelMapa
+mapa.height = alturaQueBuscamos
 
 // clase
 class Mokepon{
-    constructor(nombre, foto, vidas, fotoMapa,){
+    constructor(nombre, foto, vidas, fotoMapa, id = null ){
         this.nombre = nombre
         this.foto = foto
         this.vidas = vidas
@@ -79,6 +79,7 @@ class Mokepon{
         this.mapaFoto.src = fotoMapa
         this.velocidadX = 0
         this.velocidadY = 0
+        this.id = id
         // cree otro this que cambia la imagen del personaje seleccionado y muestra una imagen que representa a el personaje
         // this = esto mismo "EL.nombre es = a nombre"
     }
@@ -101,65 +102,40 @@ let ZERO =new Mokepon('Zero','css/imagenes/zero2.png',5,"css/imagenes/zeroA.png"
 
 let NACHO = new Mokepon('Nacho','css/imagenes/nacho3.png',5,"css/imagenes/nachoA.png")
  
-// objetos del enemigo
-let VALEnemigo = new Mokepon('Val',"css/imagenes/val1.png",5,"css/imagenes/valA.png",)
-
-let ZEROEnemigo =new Mokepon('Zero','css/imagenes/zero2.png',5,"css/imagenes/zeroA.png",)
-
-let NACHOEnemigo = new Mokepon('Nacho','css/imagenes/nacho3.png',5,"css/imagenes/nachoA.png",)
+// // objetos del enemigo los borre para que sean creados desde el SERVIDOR enviarPosicion
 
 
-
-// se creo la lista de ataques de los enemigos 
-VAL.ataques.push(
+// se modifico para que no sea la maquina el enemigo sino el otro usuario conectado
+// creando una lista"[]" de todos los ataques de mokepon
+const VAL_ATAQUES =[
     {nombre:'🗿',id:'boton-M4A1',imagenAtaque:'css/imagenes/m4a1.png'},
     {nombre:'🗿',id:'boton-M4A1',imagenAtaque:'css/imagenes/m4a1.png'},
     {nombre:'🗿',id:'boton-M4A1',imagenAtaque:'css/imagenes/m4a1.png'},
     {nombre:'📄',id:'boton-AK47',imagenAtaque:'css/imagenes/ak47.png'},
     {nombre:'✂',id:'boton-KAG6',imagenAtaque:'css/imagenes/kag6.png'},
-)
+]
 
-VALEnemigo.ataques.push(
-    {nombre:'🗿',id:'boton-M4A1',imagenAtaque:'css/imagenes/m4a1.png'},
-    {nombre:'🗿',id:'boton-M4A1',imagenAtaque:'css/imagenes/m4a1.png'},
+const ZERO_ATAQUES=[
+    {nombre:'✂',id:'boton-KAG6',imagenAtaque:'css/imagenes/kag6.png'},
+    {nombre:'✂',id:'boton-KAG6',imagenAtaque:'css/imagenes/kag6.png'},
+    {nombre:'✂',id:'boton-KAG6',imagenAtaque:'css/imagenes/kag6.png'},
     {nombre:'🗿',id:'boton-M4A1',imagenAtaque:'css/imagenes/m4a1.png'},
     {nombre:'📄',id:'boton-AK47',imagenAtaque:'css/imagenes/ak47.png'},
-    {nombre:'✂',id:'boton-KAG6',imagenAtaque:'css/imagenes/kag6.png'},
-)
+]
 
-ZERO.ataques.push(
-    {nombre:'✂',id:'boton-KAG6',imagenAtaque:'css/imagenes/kag6.png'},
-    {nombre:'✂',id:'boton-KAG6',imagenAtaque:'css/imagenes/kag6.png'},
-    {nombre:'✂',id:'boton-KAG6',imagenAtaque:'css/imagenes/kag6.png'},
-    {nombre:'🗿',id:'boton-M4A1',imagenAtaque:'css/imagenes/m4a1.png'},
+const NACHO_ATAQUES=[
     {nombre:'📄',id:'boton-AK47',imagenAtaque:'css/imagenes/ak47.png'},
-    
-)
+    {nombre:'📄',id:'boton-AK47',imagenAtaque:'css/imagenes/ak47.png'},
+    {nombre:'📄',id:'boton-AK47',imagenAtaque:'css/imagenes/ak47.png'},
+    {nombre:'🗿',id:'boton-M4A1',imagenAtaque:'css/imagenes/m4a1.png'},
+    {nombre:'✂',id:'boton-KAG6',imagenAtaque:'css/imagenes/kag6.png'},
+]
+// los "NOMBRE-ATAQUES" es una lista pero al ponerle los ...NOMBRE-ATAQUES se rreescribe el codigo al llamarlo
+VAL.ataques.push(...VAL_ATAQUES)
 
-ZEROEnemigo.ataques.push(
-    {nombre:'✂',id:'boton-KAG6',imagenAtaque:'css/imagenes/kag6.png'},
-    {nombre:'✂',id:'boton-KAG6',imagenAtaque:'css/imagenes/kag6.png'},
-    {nombre:'✂',id:'boton-KAG6',imagenAtaque:'css/imagenes/kag6.png'},
-    {nombre:'🗿',id:'boton-M4A1',imagenAtaque:'css/imagenes/m4a1.png'},
-    {nombre:'📄',id:'boton-AK47',imagenAtaque:'css/imagenes/ak47.png'},
-    
-)
+ZERO.ataques.push(...ZERO_ATAQUES)
 
-NACHO.ataques.push(
-    {nombre:'📄',id:'boton-AK47',imagenAtaque:'css/imagenes/ak47.png'},
-    {nombre:'📄',id:'boton-AK47',imagenAtaque:'css/imagenes/ak47.png'},
-    {nombre:'📄',id:'boton-AK47',imagenAtaque:'css/imagenes/ak47.png'},
-    {nombre:'🗿',id:'boton-M4A1',imagenAtaque:'css/imagenes/m4a1.png'},
-    {nombre:'✂',id:'boton-KAG6',imagenAtaque:'css/imagenes/kag6.png'},
-)
-
-NACHOEnemigo.ataques.push(
-    {nombre:'📄',id:'boton-AK47',imagenAtaque:'css/imagenes/ak47.png'},
-    {nombre:'📄',id:'boton-AK47',imagenAtaque:'css/imagenes/ak47.png'},
-    {nombre:'📄',id:'boton-AK47',imagenAtaque:'css/imagenes/ak47.png'},
-    {nombre:'🗿',id:'boton-M4A1',imagenAtaque:'css/imagenes/m4a1.png'},
-    {nombre:'✂',id:'boton-KAG6',imagenAtaque:'css/imagenes/kag6.png'},
-)
+NACHO.ataques.push(...NACHO_ATAQUES)
 
 mokepones.push(VAL,ZERO,NACHO)
 
@@ -170,8 +146,6 @@ function iniciarJuego(){
     sectionReiniciar.style.display = 'none'
     sectionVerMapa.style.display = 'none'
 
-    // "mokepones.forEach" se le indica a js que por cada elemento que se agrege a este arreglo "mokepones"" automatizando la creacion de los personajes
-    // "forEach"por cada uno de los arreglos mokepones has algo
     mokepones.forEach((mokepon) =>{
         //´´ =>comollas invertidas sirven para implementar directamente html en variables ".js"
         opcionDeMokepones =`
@@ -462,16 +436,15 @@ function pintarCanvas(){
 // se pintan a los enemigos y al personaje con el array ".pintarMokepon()"en el mapa llamando a el 
    mascotaJugadorObjeto.pintarMokepon()
    
-   VALEnemigo.pintarMokepon()
-   ZEROEnemigo.pintarMokepon()
-   NACHOEnemigo.pintarMokepon()
+// //    VALEnemigo.pintarMokepon()
+// //    ZEROEnemigo.pintarMokepon()
+// //    NACHOEnemigo.pintarMokepon()
    enviarPosicion(mascotaJugadorObjeto.x, mascotaJugadorObjeto.y)
-//  si la mascotaJugadorObjeto se mueve entonses se invocan las funtion revisarColision
-   if(mascotaJugadorObjeto.velocidadY !== 0 || mascotaJugadorObjeto.velocidadX !== 0){
-    revisarColision(VALEnemigo)
-    revisarColision(ZEROEnemigo)
-    revisarColision(NACHOEnemigo)
-   }
+//    if(mascotaJugadorObjeto.velocidadY !== 0 || mascotaJugadorObjeto.velocidadX !== 0){
+//     // revisarColision(VALEnemigo)
+//     // revisarColision(ZEROEnemigo)
+//     // revisarColision(NACHOEnemigo)
+//    }
 }
 
 function enviarPosicion(x, y) {
@@ -487,9 +460,34 @@ function enviarPosicion(x, y) {
     })
     .then(function (res) {
         if (res.ok) {
+            // para leer el formato JSON
             res.json()
+            // para leer el JSON
                 .then(function({ enemigos }){
+                    // { enemigos } se extrae la variable espesifica del res(similar a respuesta.enemigo)
                     console.log(enemigos);
+
+                    enemigos.forEach(function (enemigo){
+                        console.log(enemigo);
+                        let mokeponEnemigo = null
+                        const mokeponNombre = enemigo.mokepon.nombre || "error emn"
+                        // if(mokeponEnemigo =! undefined){
+                        if (mokeponNombre === 'Val'){
+                        mokeponEnemigo = new Mokepon('Val',"css/imagenes/val1.png",5,"css/imagenes/valA.png",)
+                        }else if(mokeponNombre === 'Zero'){
+                        mokeponEnemigo =new Mokepon('Zero','css/imagenes/zero2.png',5,"css/imagenes/zeroA.png",)        
+                        }else if(mokeponNombre === 'Nacho'){
+                        mokeponEnemigo = new Mokepon('Nacho','css/imagenes/nacho3.png',5,"css/imagenes/nachoA.png",)
+                        }
+                        mokeponEnemigo.x = enemigo.x
+                        mokeponEnemigo.y = enemigo.y
+
+                        mokeponEnemigo.pintarMokepon()
+                        // }
+                    })
+                    
+                    
+                    
                 })
         }
     })

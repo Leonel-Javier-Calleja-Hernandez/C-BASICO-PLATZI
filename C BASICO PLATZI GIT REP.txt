@@ -12,6 +12,7 @@ git remoto agregar origen https://github.com/leoneljaviercallejahernandez/C-BASI
 git push -u origen principal
 
 REPOSITORIO github = C BASICO PLATZI
+
 git add .
 git commit -m "GUARDADO//::"
 git remote add origin https://github.com/leoneljaviercallejahernandez/C-BASICO-PLATZI.git

@@ -24,6 +24,7 @@ const mapa = document.getElementById("mapa")
 
 let jugadorId = null
 let mokepones = []
+let mokeponesEnemigos = []
 let ataqueJugador =[]
 let ataqueEnemigo =[]
 let opcionDeMokepones
@@ -435,7 +436,9 @@ function pintarCanvas(){
     )
 // se pintan a los enemigos y al personaje con el array ".pintarMokepon()"en el mapa llamando a el 
    mascotaJugadorObjeto.pintarMokepon()
-   
+   mokeponesEnemigos.forEach(function(mokepon){
+    mokepon.pintarMokepon()
+   })
 // //    VALEnemigo.pintarMokepon()
 // //    ZEROEnemigo.pintarMokepon()
 // //    NACHOEnemigo.pintarMokepon()
@@ -467,7 +470,7 @@ function enviarPosicion(x, y) {
                     // { enemigos } se extrae la variable espesifica del res(similar a respuesta.enemigo)
                     console.log(enemigos);
 
-                    enemigos.forEach(function (enemigo){
+                    mokeponesEnemigos = enemigos.map(function (enemigo){
                         console.log(enemigo);
                         let mokeponEnemigo = null
                         const mokeponNombre = enemigo.mokepon.nombre || "error emn"
@@ -482,7 +485,7 @@ function enviarPosicion(x, y) {
                         mokeponEnemigo.x = enemigo.x
                         mokeponEnemigo.y = enemigo.y
 
-                        mokeponEnemigo.pintarMokepon()
+                        return mokeponEnemigo
                         // }
                     })
                     

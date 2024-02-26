@@ -23,6 +23,7 @@ const sectionVerMapa = document.getElementById("ver-mapa")
 const mapa = document.getElementById("mapa")
 
 let jugadorId = null
+let enemigoId = null
 let mokepones = []
 let mokeponesEnemigos = []
 let ataqueJugador =[]
@@ -286,10 +287,41 @@ function secuenciaAtaque(){
             // console.log(e)
             // console.log(e.target.alt==='✂')
             // console.log(ataqueJugador)
-            ataqueAleatorioEnemigo()
+            if (ataqueJugador.length === 5 ) {
+                enviarAtaques()
+
+            }
+
         })
     })
    
+}
+
+function enviarAtaques(){
+    fetch(`http://localhost:8080/mokepon/${jugadorId}/ataques`, {
+        method : "post",
+        headers:{
+        "Content-Type":"application/json"
+    },
+    body : JSON.stringify({
+        ataques: ataqueJugador
+    })
+    })
+    intervalo = setInterval(obtenerAtaques, 50)
+}
+function obtenerAtaques() {
+    fetch(`http://localhost:8080/mokepon/${enemigoId}/ataques`)
+    .then(function(res) {
+        if (res.ok){
+            res.json()
+            .then(function({ataques}){
+                if (ataques.length === 5){
+                    ataqueEnemigo =ataques
+                    combatePartida()
+                }
+            })
+        }
+    })
 }
 // se combirtio la seleccionarMascotaEnemigo() en un afuente de verdad
 function seleccionarMascotaEnemigo(enemigo){
@@ -380,6 +412,7 @@ function indexAmbosOponentes(jugador,enemigo){
 }
 //COMBATE
 function combatePartida(){
+    clearInterval(intervalo)
 
     for (let index = 0; index < ataqueJugador.length; index++) {
         if(ataqueJugador[index]===ataqueEnemigo[index]){
@@ -438,16 +471,9 @@ function pintarCanvas(){
    mascotaJugadorObjeto.pintarMokepon()
    mokeponesEnemigos.forEach(function(mokepon){
     mokepon.pintarMokepon()
+    revisarColision(mokepon)
    })
-// //    VALEnemigo.pintarMokepon()
-// //    ZEROEnemigo.pintarMokepon()
-// //    NACHOEnemigo.pintarMokepon()
    enviarPosicion(mascotaJugadorObjeto.x, mascotaJugadorObjeto.y)
-//    if(mascotaJugadorObjeto.velocidadY !== 0 || mascotaJugadorObjeto.velocidadX !== 0){
-//     // revisarColision(VALEnemigo)
-//     // revisarColision(ZEROEnemigo)
-//     // revisarColision(NACHOEnemigo)
-//    }
 }
 
 function enviarPosicion(x, y) {
@@ -471,20 +497,20 @@ function enviarPosicion(x, y) {
                     console.log(enemigos);
 
                     mokeponesEnemigos = enemigos.map(function (enemigo){
-                        console.log(enemigo);
+                       
                         let mokeponEnemigo = null
                         const mokeponNombre = enemigo.mokepon.nombre || "error emn"
                         // if(mokeponEnemigo =! undefined){
                         if (mokeponNombre === 'Val'){
-                        mokeponEnemigo = new Mokepon('Val',"css/imagenes/val1.png",5,"css/imagenes/valA.png",)
+                        mokeponEnemigo = new Mokepon('Val',"css/imagenes/val1.png",5,"css/imagenes/valA.png", enemigo.id)
                         }else if(mokeponNombre === 'Zero'){
-                        mokeponEnemigo =new Mokepon('Zero','css/imagenes/zero2.png',5,"css/imagenes/zeroA.png",)        
+                        mokeponEnemigo =new Mokepon('Zero','css/imagenes/zero2.png',5,"css/imagenes/zeroA.png", enemigo.id)        
                         }else if(mokeponNombre === 'Nacho'){
-                        mokeponEnemigo = new Mokepon('Nacho','css/imagenes/nacho3.png',5,"css/imagenes/nachoA.png",)
+                        mokeponEnemigo = new Mokepon('Nacho','css/imagenes/nacho3.png',5,"css/imagenes/nachoA.png", enemigo.id)
                         }
                         mokeponEnemigo.x = enemigo.x
                         mokeponEnemigo.y = enemigo.y
-
+                        console.log(enemigo);
                         return mokeponEnemigo
                         // }
                     })
@@ -600,7 +626,7 @@ function revisarColision(enemigo){
     clearInterval(intervalo)
     console.log("se detecto colision");
    sectionSeleccionarAtaque.style.display = 'flex'
-//    OCULTAMOS EL MAPA
+    enemigoId = enemigo.id
    sectionVerMapa.style.display = 'none' 
     detenerMovimiento()
     seleccionarMascotaEnemigo(enemigo)

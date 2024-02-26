@@ -14,11 +14,14 @@ class Jugador{
         this.id =id
     }
     asignarMokepon(mokepon){
-        this.mokepon =mokepon
+        this.mokepon = mokepon
     }
     actualizarPosicion(x, y){
         this.x = x
         this.y = y
+    }
+    asignarAtaques(ataques){
+        this.ataques = ataques
     }
         
 }
@@ -58,6 +61,7 @@ app.post("/mokepon/:jugadorId",(req, res)=>{
     console.log(jugadores)
     // el id de usuario
     console.log(jugadorId)
+    console.log(nombre)
   
     res.end()
 })
@@ -78,7 +82,31 @@ app.post("/mokepon/:jugadorId/posicion", (req, res) => {
     res.send({
         enemigos
     })
+
 })
+
+// asignar ataques
+app.post("/mokepon/:jugadorId/ataques",(req, res)=>{
+    const jugadorId = req.params.jugadorId || "fallo ataques jugadoId"
+    const ataques = req.body.ataques || []
+
+    const jugadorIndex = jugadores.findIndex((jugador) => jugadorId === jugador.id)
+    if (jugadorIndex >= 0){
+        // JUGADOR EN LA LISTA
+        jugadores[jugadorIndex].asignarAtaques(ataques)
+    }
+
+    res.end()
+
+})
+app.get("/mokepon/:jugadorId/ataques", (req, res) =>{
+    const jugadorId = req.params.jugadorId || ""
+    const jugador = jugadores.find ((jugador) => jugador.id === jugadorId)
+    res.send({ 
+        ataques: jugador.ataques || []
+    })
+})
+
 app.listen(8080, ()=>{
     console.log("reinicio el servidor y");
     console.log("el servidor ya funciona :)");

@@ -60,7 +60,8 @@ let anchoMaximoDelMapa = 350
 if (anchoDelMapa > anchoMaximoDelMapa){
     anchoMaximoDelMapa = anchoMaximoDelMapa - 20
 }
-alturaQueBuscamos = anchoDelMapa * 450 / 650
+alturaQueBuscamos = anchoDelMapa * 800
+ / 650
 
 mapa.width = anchoDelMapa
 mapa.height = alturaQueBuscamos
@@ -75,8 +76,8 @@ class Mokepon{
         this.ancho = 80
         this.alto = 80
         // le agrege las dimenciones de la imagen, tambien la funcion de pintar la imagen  y que se mueva asi la derecha
-        this.x = aleatorio(0, mapa.width-this.ancho)
-        this.y = aleatorio(0, mapa.height-this.alto)
+        this.x = aleatorio(0, 300)
+        this.y = aleatorio(0, 250)
         this.mapaFoto = new Image()
         this.mapaFoto.src = fotoMapa
         this.velocidadX = 0
@@ -183,6 +184,7 @@ function unirseAlJuego(){
                     res.text()
                     .then(function (respuesta){
                         console.log(respuesta)
+
                         jugadorId = respuesta
                     })
 
@@ -244,7 +246,7 @@ function extraerAtaques(mascotasJugador){
           // if(si)(mascotaJugador es igual(==) a mokepones[i]"cunado tenemos un arreglo y le ponemos lo [numero"i"] esto signigica que nos va a regresar el odjet que este en ese indise (numero) .nombre has que (ataques) sea ==(igual) mokepones[i].ataques")
     }
     mostrarAtaques(ataques)
-    // console.log(ataques)
+    console.log(ataques)
 }
 
 function mostrarAtaques(ataques){
@@ -305,7 +307,7 @@ function enviarAtaques(){
         ataques: ataqueJugador
     })
     })
-    intervalo = setInterval(obtenerAtaques, 50)
+    intervalo = setInterval(obtenerAtaques, 10)
 }
 function obtenerAtaques() {
     fetch(`http://192.168.101.88:8080/mokepon/${enemigoId}/ataques`)
@@ -331,26 +333,26 @@ function seleccionarMascotaEnemigo(enemigo){
 
 
 //  'function ataqueAleatorioEnemigo()' ya se esta guardando en el arreglo ataqueEnemigo en fila
-    function ataqueAleatorioEnemigo(){
-        console.log("ataques MOK E",ataquesMokeponEnemigo);
-        let ataqueAleatorio=aleatorio(0, ataquesMokeponEnemigo.length -1)
+//     function ataqueAleatorioEnemigo(){
+//         console.log("ataques MOK E",ataquesMokeponEnemigo);
+//         let ataqueAleatorio=aleatorio(0, ataquesMokeponEnemigo.length -1)
 
-        if(ataqueAleatorio == 0 || ataqueAleatorio ==1 ){
-            ataqueEnemigo.push('M4A1')
-        }else if(ataqueAleatorio == 3 || ataqueAleatorio == 4){
-            ataqueEnemigo.push('AK47')
-        }else {
-            ataqueEnemigo.push('KAG6')
-        }
-        console.log(ataqueEnemigo)
-        iniciarPelea()
+//         if(ataqueAleatorio == 0 || ataqueAleatorio ==1 ){
+//             ataqueEnemigo.push('M4A1')
+//         }else if(ataqueAleatorio == 3 || ataqueAleatorio == 4){
+//             ataqueEnemigo.push('AK47')
+//         }else {
+//             ataqueEnemigo.push('KAG6')
+//         }
+//         console.log(ataqueEnemigo)
+//         iniciarPelea()
         
-    }
+//     }
 
-function iniciarPelea(){
-    if(ataqueJugador.length=== 5)
-    combatePartida()
-}
+// function iniciarPelea(){
+//     if(ataqueJugador.length=== 5)
+//     combatePartida()
+// }
 
 
 function crearMensaje(){

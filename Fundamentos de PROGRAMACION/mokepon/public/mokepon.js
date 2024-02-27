@@ -177,7 +177,7 @@ function iniciarJuego(){
 //Dentro de .then, se verifica si la respuesta es exitosa utilizando la propiedad "ok" de la respuesta. Si la respuesta es exitosa, se procede a obtener el cuerpo de la respuesta como texto utilizando el método res.text().
 //  si la respuesta es exitosa, obtiene el cuerpo de la respuesta como texto y lo imprime en la consola.
 function unirseAlJuego(){
-    fetch("http://192.168.101.88:8080/unirse")
+    fetch("http://192.168.43.130:8080/unirse")
         .then(function (res) {
             // console.log(res)
             if (res.ok) {
@@ -223,7 +223,7 @@ function seccionarMascotaJugador(){
 }
 
 function seleccionarMokepon(mascotaJugador){
-    fetch(`http://192.168.101.88:8080/mokepon/${jugadorId}` ,{
+    fetch(`http://192.168.43.130:8080/mokepon/${jugadorId}` ,{
         method: "post",
         headers: {
             "Content-Type":"application/json"
@@ -287,7 +287,7 @@ function secuenciaAtaque(){
                 boton.disabled = true
                }
         //se le envia los ataques de el enemigo al jugador
-            if (ataqueJugador.length === 5 ) {
+            if (ataqueJugador.length === 5 || ataqueEnemigo.length === 5) {
                 enviarAtaques()
 
             }
@@ -298,7 +298,7 @@ function secuenciaAtaque(){
 }
 // se creea la funcion enviarAtaques al servidor
 function enviarAtaques(){
-    fetch(`http://192.168.101.88:8080/mokepon/${jugadorId}/ataques`, {
+    fetch(`http://192.168.43.130:8080/mokepon/${jugadorId}/ataques`, {
         method : "post",
         headers:{
         "Content-Type":"application/json"
@@ -307,16 +307,16 @@ function enviarAtaques(){
         ataques: ataqueJugador
     })
     })
-    intervalo = setInterval(obtenerAtaques, 10)
+    intervalo = setInterval(obtenerAtaques, 50)
 }
 function obtenerAtaques() {
-    fetch(`http://192.168.101.88:8080/mokepon/${enemigoId}/ataques`)
+    fetch(`http://192.168.43.130:8080/mokepon/${enemigoId}/ataques`)
     .then(function(res) {
         if (res.ok){
             res.json()
-            .then(function({ataques}){
+            .then(function({ ataques }){
                 if (ataques.length === 5){
-                    ataqueEnemigo =ataques
+                    ataqueEnemigo = ataques
                     combatePartida()
                 }
             })
@@ -386,7 +386,8 @@ function GANASTE(){
 
     let parrafo =document.getElementById("resultado")
     parrafo.innerHTML="🎆GANASTE✨🧨,REINICIA LA PAGINA"
-   
+    
+    enviarPosicion(500, 500)
 }
 
     function PERDISTE(){
@@ -399,7 +400,7 @@ function GANASTE(){
         let parrafo =document.getElementById("resultado")
         parrafo.innerHTML="PERDISTE😕😔,REINICIA LA PAGINA"
        
-
+        enviarPosicion(500, 500)
 }
 
     
@@ -476,7 +477,7 @@ function pintarCanvas(){
 }
 
 function enviarPosicion(x, y) {
-    fetch(`http://192.168.101.88:8080/mokepon/${jugadorId}/posicion`, {
+    fetch(`http://192.168.43.130:8080/mokepon/${jugadorId}/posicion`, {
         method: "post",
         headers: {
             "Content-Type": "application/json"
@@ -499,7 +500,6 @@ function enviarPosicion(x, y) {
                        
                         let mokeponEnemigo = null
                         const mokeponNombre = enemigo.mokepon.nombre || "error emn"
-                        // if(mokeponEnemigo =! undefined){
                         if (mokeponNombre === 'Val'){
                         mokeponEnemigo = new Mokepon('Val',"css/imagenes/val1.png",5,"css/imagenes/valA.png", enemigo.id)
                         }else if(mokeponNombre === 'Zero'){
@@ -511,7 +511,6 @@ function enviarPosicion(x, y) {
                         mokeponEnemigo.y = enemigo.y
                         console.log(enemigo);
                         return mokeponEnemigo
-                        // }
                     })
                     
                     

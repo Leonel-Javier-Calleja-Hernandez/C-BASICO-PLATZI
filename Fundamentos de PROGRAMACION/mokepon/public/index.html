@@ -29,14 +29,34 @@
         <Canvas id="mapa"></Canvas>
         <div id="botones">
             <div id="izquierda">
-                <button onmouseup="detenerMovimiento()" onmousedown="moverArriba()"> ⬆ </button>
+                <button 
+                ontouchend="detenerMovimiento()" 
+                onmouseup="detenerMovimiento()" 
+                ontouchstart="moverArriba()"
+                onmousedown="moverArriba()"
+            > ⬆ </button>
             </div>
             <div id="central">
-                <button onmouseup="detenerMovimiento()" onmousedown="moverIzquierda()"> ⬅ </button>
-                <button onmouseup="detenerMovimiento()" onmousedown="moverDerecha()"> ➡ </button>
+                <button 
+                ontouchend="detenerMovimiento()" 
+                onmouseup="detenerMovimiento()" 
+                ontouchstart="moverIzquierda()"
+                onmousedown="moverIzquierda()"
+            > ⬅ </button>
+                <button 
+                ontouchend="detenerMovimiento()"
+                onmouseup="detenerMovimiento()"
+                ontouchstart="moverDerecha()"
+                onmousedown="moverDerecha()"
+            > ➡ </button>
             </div>
             <div id="derecha">
-                <button onmouseup="detenerMovimiento()" onmousedown="moverAbajo()"> ⬇ </button>
+                <button 
+                ontouchend="detenerMovimiento()"
+                onmouseup="detenerMovimiento()"
+                ontouchstart="moverAbajo()"
+                onmousedown="moverAbajo()"
+            > ⬇ </button>
             </div>
         </div>
         
@@ -75,7 +95,7 @@
             </div>
 
         </section>
-        <script src="./js/mokepon.js"></script>
+        <script src="./mokepon.js"></script>
     </body>
 </html>
 

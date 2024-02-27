@@ -214,4 +214,12 @@ TODO LO QUE ESTA EN ESTAS {} ES A LOM QUE SE VA MODIFICAR A LA MEDIDAS DADAS
     align-items: center;
     justify-content: center;
 }
+.tituloMapa {
+    color: rgb(255, 255, 255);
+    width: 200px;
+    height: 20px;
+    background-color: #00c2ff;
+    border-radius: 15px;
+    padding: 25px;
+    font-size: 25px;}
 }

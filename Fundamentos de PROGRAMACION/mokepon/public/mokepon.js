@@ -72,8 +72,8 @@ class Mokepon{
         this.foto = foto
         this.vidas = vidas
         this.ataques = []
-        this.ancho = 60
-        this.alto = 60
+        this.ancho = 80
+        this.alto = 80
         // le agrege las dimenciones de la imagen, tambien la funcion de pintar la imagen  y que se mueva asi la derecha
         this.x = aleatorio(0, mapa.width-this.ancho)
         this.y = aleatorio(0, mapa.height-this.alto)
@@ -176,7 +176,7 @@ function iniciarJuego(){
 //Dentro de .then, se verifica si la respuesta es exitosa utilizando la propiedad "ok" de la respuesta. Si la respuesta es exitosa, se procede a obtener el cuerpo de la respuesta como texto utilizando el método res.text().
 //  si la respuesta es exitosa, obtiene el cuerpo de la respuesta como texto y lo imprime en la consola.
 function unirseAlJuego(){
-    fetch("http://localhost:8080/unirse")
+    fetch("http://192.168.101.88:8080/unirse")
         .then(function (res) {
             // console.log(res)
             if (res.ok) {
@@ -221,7 +221,7 @@ function seccionarMascotaJugador(){
 }
 
 function seleccionarMokepon(mascotaJugador){
-    fetch(`http://localhost:8080/mokepon/${jugadorId}` ,{
+    fetch(`http://192.168.101.88:8080/mokepon/${jugadorId}` ,{
         method: "post",
         headers: {
             "Content-Type":"application/json"
@@ -284,9 +284,7 @@ function secuenciaAtaque(){
                 boton.style.background = '#ff00bf'
                 boton.disabled = true
                }
-            // console.log(e)
-            // console.log(e.target.alt==='✂')
-            // console.log(ataqueJugador)
+        //se le envia los ataques de el enemigo al jugador
             if (ataqueJugador.length === 5 ) {
                 enviarAtaques()
 
@@ -296,9 +294,9 @@ function secuenciaAtaque(){
     })
    
 }
-
+// se creea la funcion enviarAtaques al servidor
 function enviarAtaques(){
-    fetch(`http://localhost:8080/mokepon/${jugadorId}/ataques`, {
+    fetch(`http://192.168.101.88:8080/mokepon/${jugadorId}/ataques`, {
         method : "post",
         headers:{
         "Content-Type":"application/json"
@@ -310,7 +308,7 @@ function enviarAtaques(){
     intervalo = setInterval(obtenerAtaques, 50)
 }
 function obtenerAtaques() {
-    fetch(`http://localhost:8080/mokepon/${enemigoId}/ataques`)
+    fetch(`http://192.168.101.88:8080/mokepon/${enemigoId}/ataques`)
     .then(function(res) {
         if (res.ok){
             res.json()
@@ -449,7 +447,6 @@ function revisarVidas(){
 }
 
 function reiniciarJuego(){
-    //"location.reload()" recarga la pagina Actual 
     location.reload()
 }
 // "pintarCanvas" agrega la imagen
@@ -477,7 +474,7 @@ function pintarCanvas(){
 }
 
 function enviarPosicion(x, y) {
-    fetch(`http://localhost:8080/mokepon/${jugadorId}/posicion`, {
+    fetch(`http://192.168.101.88:8080/mokepon/${jugadorId}/posicion`, {
         method: "post",
         headers: {
             "Content-Type": "application/json"
